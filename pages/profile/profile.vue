@@ -8,26 +8,28 @@
 						<text class="nickname">{{ nickname || "Zolo" }}</text>
 						<text class="phone">{{ phone || "183********" }}</text>
 					</view>
-					<view class="profile_info_right">
-						<van-icon name="arrow" color="#c8c9cc" size="30rpx"/>
-					</view>
+					<view class="profile_info_right"><van-icon name="arrow" color="#c8c9cc" size="30rpx" /></view>
 				</view>
 			</view>
 			<view class="header_bottom">
-				<view v-for="item in metadata" :key="id" class="item">
+				<navigator :url="item.to" open-type="navigate" v-for="item in metadata" :key="id" class="item">
 					<text>{{ item.count }}</text>
 					<text>{{ item.name }}</text>
-				</view>
+				</navigator>
 			</view>
 		</view>
 		<view class="bills">
 			<van-cell-group>
-				<van-cell :title="item.name" v-for="item in bills" :key="id" :icon="item.icon"><van-icon name="arrow" class="custom-icon" /></van-cell>
+				<navigator :url="item.to" open-type="navigate" v-for="item in bills" :key="id">
+					<van-cell :title="item.name" :icon="item.icon"><van-icon name="arrow" class="custom-icon" /></van-cell>
+				</navigator>
 			</van-cell-group>
 		</view>
 		<view class="options">
 			<van-cell-group>
-				<van-cell :title="item.name" v-for="item in options" :key="id" :icon="item.icon"><van-icon name="arrow" class="custom-icon" /></van-cell>
+				<navigator :url="item.to" open-type="navigate" v-for="item in options" :key="id">
+					<van-cell :title="item.name" :icon="item.icon"><van-icon name="arrow" class="custom-icon" /></van-cell>
+				</navigator>
 			</van-cell-group>
 		</view>
 	</view>
@@ -37,14 +39,22 @@
 export default {
 	data() {
 		return {
-			metadata: [{ id: 1, name: "足迹", count: 55, to: "" }, { id: 2, name: "车位", count: 0, to: "" }, { id: 3, name: "消息", count: 4, to: "" }],
-			bills: [{ id: 1, name: "钱包", icon: "gold-coin-o", to: "" }, { id: 2, name: "优惠券", icon: "coupon-o", to: "" }, { id: 3, name: "积分", icon: "discount", to: "" }],
+			metadata: [
+				{ id: 1, name: "足迹", count: 55, to: "/pages/index/index" },
+				{ id: 2, name: "车位", count: 0, to: "/pages/index/index" },
+				{ id: 3, name: "消息", count: 4, to: "/pages/index/index" }
+			],
+			bills: [
+				{ id: 1, name: "钱包", icon: "gold-coin-o", to: "/subpages/wallet" },
+				{ id: 2, name: "优惠券", icon: "coupon-o", to: "/subpages/coupon" },
+				{ id: 3, name: "积分", icon: "discount", to: "/subpages/point/point" }
+			],
 			options: [
-				{ id: 1, name: "我的订单", icon: "orders-o" },
-				{ id: 2, name: "车牌管理", icon: "font-o" },
-				{ id: 2, name: "分享好友", icon: "share-o" },
-				{ id: 4, name: "我要投诉", icon: "service-o" },
-				{ id: 5, name: "我要反馈", icon: "smile-comment-o" }
+				{ id: 1, name: "我的订单", icon: "orders-o", to: "/pages/index/index" },
+				{ id: 2, name: "车牌管理", icon: "font-o", to: "/pages/index/index" },
+				{ id: 2, name: "分享好友", icon: "share-o", to: "/pages/index/index" },
+				{ id: 4, name: "我要投诉", icon: "service-o", to: "/pages/index/index" },
+				{ id: 5, name: "我要反馈", icon: "smile-comment-o", to: "/pages/index/index" }
 			]
 		};
 	},
@@ -67,7 +77,7 @@ export default {
 				width: 100%;
 				display: flex;
 				justify-content: space-between;
-				.profile_info_left{
+				.profile_info_left {
 					display: flex;
 					flex-direction: column;
 					margin-left: 10rpx;
@@ -83,8 +93,8 @@ export default {
 						color: $uni-text-color-grey;
 					}
 				}
-				.profile_info_right{
-					van-icon{
+				.profile_info_right {
+					van-icon {
 						margin-right: 16rpx;
 					}
 				}

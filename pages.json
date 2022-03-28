@@ -9,7 +9,7 @@
 		}, {
 			"path": "pages/stall/stall",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "车位",
 				"enablePullDownRefresh": false
 			}
 		}, {
@@ -26,6 +26,22 @@
 			}
 		}
 	],
+	"subPackages": [{
+		"root": "subpages",
+		"pages": [{
+			"path": "wallet",
+			"style": {
+				"navigationBarTitleText": "我的钱包",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "coupon",
+			"style": {
+				"navigationBarTitleText": "我的积分",
+				"enablePullDownRefresh": false
+			}
+		}]
+	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
@@ -36,7 +52,11 @@
 			"van-image": "/wxcomponents/vant/dist/image/index",
 			"van-cell": "/wxcomponents/vant/dist/cell/index",
 			"van-cell-group": "/wxcomponents/vant/dist/cell-group/index",
-			"van-icon": "/wxcomponents/vant/dist/icon/index"
+			"van-icon": "/wxcomponents/vant/dist/icon/index",
+			"van-tab": "/wxcomponents/vant/dist/tab/index",
+			"van-tabs": "/wxcomponents/vant/dist/tabs/index",
+			"van-card": "/wxcomponents/vant/dist/card/index"
+
 		}
 	},
 	"tabBar": {

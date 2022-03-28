@@ -165,18 +165,28 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
     return {
-      metadata: [{ id: 1, name: "足迹", count: 55, to: "" }, { id: 2, name: "车位", count: 0, to: "" }, { id: 3, name: "消息", count: 4, to: "" }],
-      bills: [{ id: 1, name: "钱包", icon: "gold-coin-o", to: "" }, { id: 2, name: "优惠券", icon: "coupon-o", to: "" }, { id: 3, name: "积分", icon: "discount", to: "" }],
+      metadata: [
+      { id: 1, name: "足迹", count: 55, to: "/pages/index/index" },
+      { id: 2, name: "车位", count: 0, to: "/pages/index/index" },
+      { id: 3, name: "消息", count: 4, to: "/pages/index/index" }],
+
+      bills: [
+      { id: 1, name: "钱包", icon: "gold-coin-o", to: "/subpages/wallet" },
+      { id: 2, name: "优惠券", icon: "coupon-o", to: "/subpages/coupon" },
+      { id: 3, name: "积分", icon: "discount", to: "/subpages/point/point" }],
+
       options: [
-      { id: 1, name: "我的订单", icon: "orders-o" },
-      { id: 2, name: "车牌管理", icon: "font-o" },
-      { id: 2, name: "分享好友", icon: "share-o" },
-      { id: 4, name: "我要投诉", icon: "service-o" },
-      { id: 5, name: "我要反馈", icon: "smile-comment-o" }] };
+      { id: 1, name: "我的订单", icon: "orders-o", to: "/pages/index/index" },
+      { id: 2, name: "车牌管理", icon: "font-o", to: "/pages/index/index" },
+      { id: 2, name: "分享好友", icon: "share-o", to: "/pages/index/index" },
+      { id: 4, name: "我要投诉", icon: "service-o", to: "/pages/index/index" },
+      { id: 5, name: "我要反馈", icon: "smile-comment-o", to: "/pages/index/index" }] };
 
 
   },

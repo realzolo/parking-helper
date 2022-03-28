@@ -29,6 +29,27 @@
                     "name": "",
                     "pathName": "pages/stall/stall",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/order/order",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/wallet/wallet",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/coupon",
+                    "query": "",
                     "scene": null,
                     "launchMode": "default"
                 }
