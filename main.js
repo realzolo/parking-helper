@@ -1,9 +1,13 @@
 import App from './App'
 import Dialog from './wxcomponents/vant/dist/dialog/dialog';
+import Toast from './wxcomponents/vant/dist/toast/toast';
+import hasLogin from "@/utils/login-util";
 // #ifndef VUE3
 import Vue from 'vue'
 Vue.config.productionTip = false
 Vue.prototype.$dialog = Dialog
+Vue.prototype.$toast = Toast
+Vue.prototype.$hasLogin = hasLogin
 App.mpType = 'app'
 const app = new Vue({
 	...App

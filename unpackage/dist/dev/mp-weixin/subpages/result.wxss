@@ -26,7 +26,11 @@
 /* 文章场景相关 */
 .wrapper.data-v-554615ea {
   height: 100vh;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
+}
+.result_wrapper.data-v-554615ea {
+  display: flex;
+  justify-content: center;
 }
 .info_wrapper.data-v-554615ea {
   display: flex;

@@ -1,12 +1,13 @@
 <template>
 	<view class="wrapper">
+		<van-toast id="van-toast" />
 		<view class="header">
 			<view class="header_top">
-				<van-image class="profile_image" round width="112rpx" height="112rpx" src="https://img.yzcdn.cn/vant/cat.jpeg" fit="cover" />
+				<van-image class="profile_image" round width="112rpx" height="112rpx" :src="userInfo.avatar" fit="cover" />
 				<view class="profile_info">
 					<view class="profile_info_left">
-						<text class="nickname">{{ nickname || "Zolo" }}</text>
-						<text class="phone">{{ phone || "183********" }}</text>
+						<text class="nickname">{{ userInfo.nickname || "***" }}</text>
+						<text class="phone">{{ userInfo.phone || "***********" }}</text>
 					</view>
 					<view class="profile_info_right"><van-icon name="arrow" color="#c8c9cc" size="30rpx" /></view>
 				</view>
@@ -30,10 +31,10 @@
 				<navigator :url="item.to" :open-type="item.id === 1 ? 'switchTab' : 'navigate'" v-for="item in options" :key="id">
 					<van-cell :title="item.name" :icon="item.icon"><van-icon name="arrow" class="custom-icon" /></van-cell>
 				</navigator>
-				<!-- 
-				{ id: 2, name: "分享好友", icon: "share-o", to: "/pages/index/index" }
-				-->
-				<van-cell title="分享好友" icon="share-o" @click="onClick" ><van-icon name="arrow" class="custom-icon" /></van-cell>
+				<van-cell title="分享好友" icon="share-o" @click="onClick"><van-icon name="arrow" class="custom-icon" /></van-cell>
+				<!-- 待开发 -->
+				<van-cell title="我要投诉" icon="service-o" @click="this.$toast('功能正在开发中...')"><van-icon name="arrow" class="custom-icon" /></van-cell>
+				<van-cell title="我要反馈" icon="share-o" @click="this.$toast('功能正在开发中...')"><van-icon name="arrow" class="custom-icon" /></van-cell>
 			</van-cell-group>
 			<van-share-sheet :show="showShare" title="立即分享给好友" :options="shareOptions" @select="onSelect" @close="onClose" />
 		</view>
@@ -44,6 +45,7 @@
 export default {
 	data() {
 		return {
+			userInfo: {},
 			metadata: [
 				{ id: 1, name: "足迹", count: 55, to: "/pages/index/index" },
 				{ id: 2, name: "车位", count: 0, to: "/pages/index/index" },
@@ -57,9 +59,9 @@ export default {
 			options: [
 				{ id: 1, name: "我的订单", icon: "orders-o", to: "/pages/order/order" },
 				{ id: 2, name: "车辆管理", icon: "font-o", to: "/subpages/carlist" },
-				{ id: 3, name: "停车记录", icon: "completed", to: "/pages/index/index" },
-				{ id: 4, name: "我要投诉", icon: "service-o", to: "/pages/index/index" },
-				{ id: 5, name: "我要反馈", icon: "smile-comment-o", to: "/pages/index/index" }
+				{ id: 3, name: "停车记录", icon: "completed", to: "/pages/index/index" }
+				// { id: 4, name: "我要投诉", icon: "service-o", to: "/pages/index/index" },
+				// { id: 5, name: "我要反馈", icon: "smile-comment-o", to: "/pages/index/index" }
 			],
 			showShare: false,
 			shareOptions: [
@@ -69,6 +71,21 @@ export default {
 				{ name: "二维码", icon: "qrcode" }
 			]
 		};
+	},
+	onLoad() {
+		const that = this;
+		uni.getStorage({
+			key: "user_info",
+			success(res) {
+				that.userInfo = JSON.parse(res.data);
+			},
+			fail() {
+				console.log("Profile.vue");
+				uni.redirectTo({
+					url: "/subpages/login"
+				});
+			}
+		});
 	},
 	methods: {
 		onClick(event) {
@@ -81,7 +98,7 @@ export default {
 
 		onSelect(event) {
 			// Toast(event.detail.name);
-			console.log(event.detail.name)
+			console.log(event.detail.name);
 			this.onClose();
 		}
 	}

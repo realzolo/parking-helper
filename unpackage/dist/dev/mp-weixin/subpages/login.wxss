@@ -24,8 +24,13 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.thumb-class.data-v-676e5950 {
-  width: 100%;
-  border: 1px solid red;
+.image_wrapper.data-v-4278492c {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 200rpx 0 100rpx;
+}
+.image_wrapper text.data-v-4278492c {
+  margin-top: 40rpx;
 }
 

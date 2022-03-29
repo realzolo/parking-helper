@@ -28,7 +28,7 @@
 				<text>{{ carport.rent_price }} 元/月</text>
 			</view>
 		</view>
-		<view class="button_wrapper"><van-button type="info" round block custom-style="width: 90%" @click="onSubmit">提交订单</van-button></view>
+		<view class="button_wrapper"><van-button type="info" round block custom-style="width: 90%" @click="onSubmit">创建订单</van-button></view>
 	</view>
 </template>
 

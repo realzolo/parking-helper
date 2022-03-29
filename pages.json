@@ -71,6 +71,18 @@
 				"navigationBarTitleText": "订单结果",
 				"enablePullDownRefresh": false
 			}
+		}, {
+			"path": "feedback",
+			"style": {
+				"navigationBarTitleText": "用户反馈",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "login",
+			"style": {
+				"navigationBarTitleText": "用户登录",
+				"enablePullDownRefresh": false
+			}
 		}]
 	}],
 	"globalStyle": {
@@ -91,7 +103,8 @@
 			"van-notify": "/wxcomponents/vant/dist/notify/index",
 			"van-share-sheet": "/wxcomponents/vant/dist/share-sheet/index",
 			"van-submit-bar": "/wxcomponents/vant/dist/submit-bar/index",
-			"van-dialog": "/wxcomponents/vant/dist/dialog/index"
+			"van-dialog": "/wxcomponents/vant/dist/dialog/index",
+			 "van-toast": "/wxcomponents/vant/dist/toast/index"
 		}
 	},
 	"tabBar": {

@@ -26,6 +26,8 @@
 
 
 
+
+
 /*每个页面公共css */
 .van-ellipsis{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .van-multi-ellipsis--l2{-webkit-line-clamp:2}
@@ -40,10 +42,10 @@
 .van-hairline--bottom:after{border-bottom-width:1px}
 .van-hairline--top-bottom:after{border-width:1px 0}
 .van-hairline--surround:after{border-width:1px}
-page{
-	background-color: #EFEFEF;
+page {
+	background-color: #efefef;
 }
-view{
+view {
 	box-sizing: border-box;
 }
 
