@@ -40,6 +40,18 @@
 				"navigationBarTitleText": "我的积分",
 				"enablePullDownRefresh": false
 			}
+		}, {
+			"path": "carlist",
+			"style": {
+				"navigationBarTitleText": "车辆管理",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "caredit",
+			"style": {
+				"navigationBarTitleText": "编辑车辆信息",
+				"enablePullDownRefresh": false
+			}
 		}]
 	}],
 	"globalStyle": {
@@ -55,7 +67,9 @@
 			"van-icon": "/wxcomponents/vant/dist/icon/index",
 			"van-tab": "/wxcomponents/vant/dist/tab/index",
 			"van-tabs": "/wxcomponents/vant/dist/tabs/index",
-			"van-card": "/wxcomponents/vant/dist/card/index"
+			"van-card": "/wxcomponents/vant/dist/card/index",
+			"van-field": "/wxcomponents/vant/dist/field/index",
+			"van-notify": "/wxcomponents/vant/dist/notify/index"
 
 		}
 	},

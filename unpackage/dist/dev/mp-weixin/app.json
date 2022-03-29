@@ -10,7 +10,9 @@
       "root": "subpages",
       "pages": [
         "wallet",
-        "coupon"
+        "coupon",
+        "carlist",
+        "caredit"
       ]
     }
   ],
@@ -60,6 +62,8 @@
     "van-icon": "/wxcomponents/vant/dist/icon/index",
     "van-tab": "/wxcomponents/vant/dist/tab/index",
     "van-tabs": "/wxcomponents/vant/dist/tabs/index",
-    "van-card": "/wxcomponents/vant/dist/card/index"
+    "van-card": "/wxcomponents/vant/dist/card/index",
+    "van-field": "/wxcomponents/vant/dist/field/index",
+    "van-notify": "/wxcomponents/vant/dist/notify/index"
   }
 }
