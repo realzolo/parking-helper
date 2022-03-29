@@ -37,7 +37,7 @@
 		}, {
 			"path": "coupon",
 			"style": {
-				"navigationBarTitleText": "我的积分",
+				"navigationBarTitleText": "我的优惠券",
 				"enablePullDownRefresh": false
 			}
 		}, {
@@ -69,8 +69,8 @@
 			"van-tabs": "/wxcomponents/vant/dist/tabs/index",
 			"van-card": "/wxcomponents/vant/dist/card/index",
 			"van-field": "/wxcomponents/vant/dist/field/index",
-			"van-notify": "/wxcomponents/vant/dist/notify/index"
-
+			"van-notify": "/wxcomponents/vant/dist/notify/index",
+			"van-share-sheet": "/wxcomponents/vant/dist/share-sheet/index"
 		}
 	},
 	"tabBar": {
@@ -98,14 +98,6 @@
 			"iconPath": "static/image/profile.png",
 			"selectedIconPath": "static/image/profile-active.png",
 			"text": "我的"
-		}]
-	},
-	"condition": {
-		"current": 0,
-		"list": [{
-			"name": "PageA",
-			"path": "pages/order/order",
-			"query": "name=zolo&age=22"
 		}]
 	}
 }

@@ -64,6 +64,7 @@
     "van-tabs": "/wxcomponents/vant/dist/tabs/index",
     "van-card": "/wxcomponents/vant/dist/card/index",
     "van-field": "/wxcomponents/vant/dist/field/index",
-    "van-notify": "/wxcomponents/vant/dist/notify/index"
+    "van-notify": "/wxcomponents/vant/dist/notify/index",
+    "van-share-sheet": "/wxcomponents/vant/dist/share-sheet/index"
   }
 }

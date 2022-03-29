@@ -30,7 +30,12 @@
 				<navigator :url="item.to" :open-type="item.id === 1 ? 'switchTab' : 'navigate'" v-for="item in options" :key="id">
 					<van-cell :title="item.name" :icon="item.icon"><van-icon name="arrow" class="custom-icon" /></van-cell>
 				</navigator>
+				<!-- 
+				{ id: 2, name: "分享好友", icon: "share-o", to: "/pages/index/index" }
+				-->
+				<van-cell title="分享好友" icon="share-o" @click="onClick" ><van-icon name="arrow" class="custom-icon" /></van-cell>
 			</van-cell-group>
+			<van-share-sheet :show="showShare" title="立即分享给好友" :options="shareOptions" @select="onSelect" @close="onClose" />
 		</view>
 	</view>
 </template>
@@ -52,14 +57,34 @@ export default {
 			options: [
 				{ id: 1, name: "我的订单", icon: "orders-o", to: "/pages/order/order" },
 				{ id: 2, name: "车辆管理", icon: "font-o", to: "/subpages/carlist" },
-				{ id: 2, name: "停车记录", icon: "completed", to: "/pages/index/index" },
-				{ id: 2, name: "分享好友", icon: "share-o", to: "/pages/index/index" },
+				{ id: 3, name: "停车记录", icon: "completed", to: "/pages/index/index" },
 				{ id: 4, name: "我要投诉", icon: "service-o", to: "/pages/index/index" },
 				{ id: 5, name: "我要反馈", icon: "smile-comment-o", to: "/pages/index/index" }
+			],
+			showShare: false,
+			shareOptions: [
+				{ name: "微信", icon: "wechat", openType: "share" },
+				{ name: "复制链接", icon: "link" },
+				{ name: "分享海报", icon: "poster" },
+				{ name: "二维码", icon: "qrcode" }
 			]
 		};
 	},
-	methods: {}
+	methods: {
+		onClick(event) {
+			this.showShare = true;
+		},
+
+		onClose() {
+			this.showShare = false;
+		},
+
+		onSelect(event) {
+			// Toast(event.detail.name);
+			console.log(event.detail.name)
+			this.onClose();
+		}
+	}
 };
 </script>
 

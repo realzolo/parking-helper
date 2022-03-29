@@ -2,8 +2,8 @@
 	<view class="">
 		<view class="nocoupon_wrapper" v-if="coupon===0">
 			<image src="@/static/image/nocoupon.svg"></image>
-			<text>您目前还没有积分</text>
-			<van-button plain type="info" round size="small" custom-style="margin-top: 40rpx; background: #efefef">了解积分</van-button>
+			<text>您目前还没有优惠券</text>
+			<van-button plain type="info" round size="small" custom-style="margin-top: 40rpx; background: #efefef">了解优惠券</van-button>
 		</view>
 	</view>
 </template>

@@ -167,6 +167,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -184,14 +189,33 @@ var _default =
       options: [
       { id: 1, name: "我的订单", icon: "orders-o", to: "/pages/order/order" },
       { id: 2, name: "车辆管理", icon: "font-o", to: "/subpages/carlist" },
-      { id: 2, name: "停车记录", icon: "completed", to: "/pages/index/index" },
-      { id: 2, name: "分享好友", icon: "share-o", to: "/pages/index/index" },
+      { id: 3, name: "停车记录", icon: "completed", to: "/pages/index/index" },
       { id: 4, name: "我要投诉", icon: "service-o", to: "/pages/index/index" },
-      { id: 5, name: "我要反馈", icon: "smile-comment-o", to: "/pages/index/index" }] };
+      { id: 5, name: "我要反馈", icon: "smile-comment-o", to: "/pages/index/index" }],
+
+      showShare: false,
+      shareOptions: [
+      { name: "微信", icon: "wechat", openType: "share" },
+      { name: "复制链接", icon: "link" },
+      { name: "分享海报", icon: "poster" },
+      { name: "二维码", icon: "qrcode" }] };
 
 
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    onClick: function onClick(event) {
+      this.showShare = true;
+    },
+
+    onClose: function onClose() {
+      this.showShare = false;
+    },
+
+    onSelect: function onSelect(event) {
+      // Toast(event.detail.name);
+      console.log(event.detail.name);
+      this.onClose();
+    } } };exports.default = _default;
 
 /***/ }),
 
