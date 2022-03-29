@@ -8,20 +8,20 @@
 		<view class="home_wrapper">
 			<view class="nav_wrapper">
 				<view class="row row_1">
-					<view class="col">
+					<navigator url="/subpages/carport?method=all" open-type="navigate" class="col">
 						<text>找车位</text>
 						<image src="@/static/image/search.svg"></image>
-					</view>
-					<view class="col">
+					</navigator>
+					<navigator url="/subpages/carport?method=near" open-type="navigate" class="col">
 						<text>附近3KM停车场</text>
 						<image src="@/static/image/park.svg"></image>
-					</view>
+					</navigator>
 				</view>
 				<view class="row row_2">
-					<view class="col">
+					<navigator url="/subpages/carport?method=rent" open-type="navigate"  class="col">
 						<text>租车位</text>
 						<image src="@/static/image/rent.svg"></image>
-					</view>
+					</navigator>
 					<view class="col">
 						<text>全天</text>
 						<image src="@/static/image/allday.svg"></image>
@@ -37,11 +37,11 @@
 				</view>
 				<view class="row row_3">
 					<view class="col">
-						<text>拼车位</text>
+						<text>约车位</text>
 						<image src="@/static/image/booking.svg"></image>
 					</view>
 					<view class="col">
-						<text>医院预约</text>
+						<text>发布我的车位</text>
 						<image src="@/static/image/hospital.svg"></image>
 					</view>
 				</view>

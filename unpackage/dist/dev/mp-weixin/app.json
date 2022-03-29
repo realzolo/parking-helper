@@ -12,7 +12,10 @@
         "wallet",
         "coupon",
         "carlist",
-        "caredit"
+        "caredit",
+        "carport",
+        "carport-detail",
+        "result"
       ]
     }
   ],
@@ -54,6 +57,11 @@
       }
     ]
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "usingComponents": {
     "van-button": "/wxcomponents/vant/dist/button/index",
     "van-image": "/wxcomponents/vant/dist/image/index",
@@ -65,6 +73,8 @@
     "van-card": "/wxcomponents/vant/dist/card/index",
     "van-field": "/wxcomponents/vant/dist/field/index",
     "van-notify": "/wxcomponents/vant/dist/notify/index",
-    "van-share-sheet": "/wxcomponents/vant/dist/share-sheet/index"
+    "van-share-sheet": "/wxcomponents/vant/dist/share-sheet/index",
+    "van-submit-bar": "/wxcomponents/vant/dist/submit-bar/index",
+    "van-dialog": "/wxcomponents/vant/dist/dialog/index"
   }
 }

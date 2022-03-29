@@ -27,15 +27,8 @@
       "list": []
     },
     "miniprogram": {
-      "current": 0,
-      "list": [
-        {
-          "name": "PageA",
-          "query": "name=zolo&age=22",
-          "id": 0,
-          "pathName": "pages/order/order"
-        }
-      ]
+      "current": -1,
+      "list": []
     }
   }
 }

@@ -71,6 +71,34 @@
                     "name": "",
                     "pathName": "subpages/caredit",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/carport",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/index/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/carport-detail",
+                    "query": "name=遵化如意停车场&price=9.8&address=河北省遵化市遵化东高速高速口&description=本停车场现有大量停车位&can_rent=true&rent_price=880",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/result",
+                    "query": "carport=%7B%22name%22%3A%22%E9%81%B5%E5%8C%96%E5%A6%82%E6%84%8F%E5%81%9C%E8%BD%A6%E5%9C%BA%22%2C%22price%22%3A%229.8%22%2C%22address%22%3A%22%E6%B2%B3%E5%8C%97%E7%9C%81%E9%81%B5%E5%8C%96%E5%B8%82%E9%81%B5%E5%8C%96%E4%B8%9C%E9%AB%98%E9%80%9F%E9%AB%98%E9%80%9F%E5%8F%A3%22%2C%22description%22%3A%22%E6%9C%AC%E5%81%9C%E8%BD%A6%E5%9C%BA%E7%8E%B0%E6%9C%89%E5%A4%A7%E9%87%8F%E5%81%9C%E8%BD%A6%E4%BD%8D%22%2C%22can_rent%22%3A%22true%22%2C%22rent_price%22%3A%22880%22%7D",
                     "scene": null,
                     "launchMode": "default"
                 }

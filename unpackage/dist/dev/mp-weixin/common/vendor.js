@@ -2220,6 +2220,92 @@ function normalizeComponent (
 
 /***/ }),
 
+/***/ 12:
+/*!************************************************************************!*\
+  !*** F:/wx-project/quick-stop/wxcomponents/vant/dist/dialog/dialog.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var queue = [];
+var defaultOptions = {
+  show: false,
+  title: '',
+  width: null,
+  theme: 'default',
+  message: '',
+  zIndex: 100,
+  overlay: true,
+  selector: '#van-dialog',
+  className: '',
+  asyncClose: false,
+  beforeClose: null,
+  transition: 'scale',
+  customStyle: '',
+  messageAlign: '',
+  overlayStyle: '',
+  confirmButtonText: '确认',
+  cancelButtonText: '取消',
+  showConfirmButton: true,
+  showCancelButton: false,
+  closeOnClickOverlay: false,
+  confirmButtonOpenType: '' };
+
+var currentOptions = Object.assign({}, defaultOptions);
+function getContext() {
+  var pages = getCurrentPages();
+  return pages[pages.length - 1];
+}
+var Dialog = function Dialog(options) {
+  options = Object.assign(Object.assign({}, currentOptions), options);
+  return new Promise(function (resolve, reject) {
+    var context = options.context || getContext();
+    var dialog = context.selectComponent(options.selector);
+    delete options.context;
+    delete options.selector;
+    if (dialog) {
+      dialog.setData(Object.assign({ callback: function callback(action, instance) {
+          action === 'confirm' ? resolve(instance) : reject(instance);
+        } }, options));
+      wx.nextTick(function () {
+        dialog.setData({ show: true });
+      });
+      queue.push(dialog);
+    } else
+    {
+      console.warn('未找到 van-dialog 节点，请确认 selector 及 context 是否正确');
+    }
+  });
+};
+Dialog.alert = function (options) {return Dialog(options);};
+Dialog.confirm = function (options) {return Dialog(Object.assign({ showCancelButton: true }, options));};
+Dialog.close = function () {
+  queue.forEach(function (dialog) {
+    dialog.close();
+  });
+  queue = [];
+};
+Dialog.stopLoading = function () {
+  queue.forEach(function (dialog) {
+    dialog.stopLoading();
+  });
+};
+Dialog.currentOptions = currentOptions;
+Dialog.defaultOptions = defaultOptions;
+Dialog.setDefaultOptions = function (options) {
+  currentOptions = Object.assign(Object.assign({}, currentOptions), options);
+  Dialog.currentOptions = currentOptions;
+};
+Dialog.resetDefaultOptions = function () {
+  currentOptions = Object.assign({}, defaultOptions);
+  Dialog.currentOptions = currentOptions;
+};
+Dialog.resetDefaultOptions();var _default =
+Dialog;exports.default = _default;
+
+/***/ }),
+
 /***/ 2:
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -2251,18 +2337,18 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 26:
+/***/ 27:
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 27);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 28);
 
 /***/ }),
 
-/***/ 27:
+/***/ 28:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -2293,7 +2379,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 28);
+module.exports = __webpack_require__(/*! ./runtime */ 29);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -2310,7 +2396,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 28:
+/***/ 29:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -9569,7 +9655,7 @@ function resolveLocaleChain(locale) {
 
 /***/ }),
 
-/***/ 75:
+/***/ 76:
 /*!************************************************************************!*\
   !*** F:/wx-project/quick-stop/wxcomponents/vant/dist/notify/notify.js ***!
   \************************************************************************/
@@ -9577,7 +9663,7 @@ function resolveLocaleChain(locale) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = Notify;var _color = __webpack_require__(/*! ../common/color */ 76);
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = Notify;var _color = __webpack_require__(/*! ../common/color */ 77);
 var defaultOptions = {
   selector: '#van-notify',
   type: 'danger',
@@ -9626,7 +9712,7 @@ Notify.clear = function (options) {
 
 /***/ }),
 
-/***/ 76:
+/***/ 77:
 /*!***********************************************************************!*\
   !*** F:/wx-project/quick-stop/wxcomponents/vant/dist/common/color.js ***!
   \***********************************************************************/

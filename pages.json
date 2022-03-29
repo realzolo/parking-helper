@@ -1,4 +1,5 @@
 {
+
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/index/index",
@@ -52,6 +53,24 @@
 				"navigationBarTitleText": "编辑车辆信息",
 				"enablePullDownRefresh": false
 			}
+		}, {
+			"path": "carport",
+			"style": {
+				"navigationBarTitleText": "车库列表",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "carport-detail",
+			"style": {
+				"navigationBarTitleText": "车位详情",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "result",
+			"style": {
+				"navigationBarTitleText": "订单结果",
+				"enablePullDownRefresh": false
+			}
 		}]
 	}],
 	"globalStyle": {
@@ -70,7 +89,9 @@
 			"van-card": "/wxcomponents/vant/dist/card/index",
 			"van-field": "/wxcomponents/vant/dist/field/index",
 			"van-notify": "/wxcomponents/vant/dist/notify/index",
-			"van-share-sheet": "/wxcomponents/vant/dist/share-sheet/index"
+			"van-share-sheet": "/wxcomponents/vant/dist/share-sheet/index",
+			"van-submit-bar": "/wxcomponents/vant/dist/submit-bar/index",
+			"van-dialog": "/wxcomponents/vant/dist/dialog/index"
 		}
 	},
 	"tabBar": {
