@@ -9017,17 +9017,19 @@ hasLogin;exports.default = _default;
 /* 27 */,
 /* 28 */,
 /* 29 */,
-/* 30 */
+/* 30 */,
+/* 31 */,
+/* 32 */
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 31);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 33);
 
 /***/ }),
-/* 31 */
+/* 33 */
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -9058,7 +9060,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 32);
+module.exports = __webpack_require__(/*! ./runtime */ 34);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -9074,7 +9076,7 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 32 */
+/* 34 */
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -9805,13 +9807,13 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 33 */,
-/* 34 */,
 /* 35 */,
 /* 36 */,
 /* 37 */,
 /* 38 */,
-/* 39 */
+/* 39 */,
+/* 40 */,
+/* 41 */
 /*!**************************************************!*\
   !*** F:/wx-project/quick-stop/utils/constant.js ***!
   \**************************************************/

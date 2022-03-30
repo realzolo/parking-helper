@@ -5,7 +5,7 @@
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "首页",
-				"enablePullDownRefresh": true
+				"enablePullDownRefresh": false
 			}
 		}, {
 			"path": "pages/stall/stall",
@@ -116,7 +116,8 @@
 			"van-share-sheet": "/wxcomponents/vant/dist/share-sheet/index",
 			"van-submit-bar": "/wxcomponents/vant/dist/submit-bar/index",
 			"van-dialog": "/wxcomponents/vant/dist/dialog/index",
-			 "van-toast": "/wxcomponents/vant/dist/toast/index"
+			"van-toast": "/wxcomponents/vant/dist/toast/index",
+			"van-search": "/wxcomponents/vant/dist/search/index"
 		}
 	},
 	"tabBar": {

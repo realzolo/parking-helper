@@ -1,7 +1,6 @@
 <template>
 	<view>
-		<map></map>
-		<button open-type="getUserProfile">点我进行授权</button>
+		<map style="height: 100vh;"></map>
 	</view>
 </template>
 
