@@ -1,0 +1,6 @@
+export const ORDER_STATUS = {
+	USING: 1,
+	EVALUATE: 2,
+	CANCELED: 3,
+	PREFECT: 4
+}

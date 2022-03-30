@@ -13,77 +13,8 @@
         "miniprogram": {
             "list": [
                 {
-                    "id": 0,
-                    "name": "PageA",
-                    "pathName": "pages/order/order",
-                    "query": "name=zolo&age=22"
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/profile/profile",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/stall/stall",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
                     "name": "",
                     "pathName": "pages/order/order",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "subpages/wallet/wallet",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "subpages/coupon",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "subpages/car",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "subpages/carlist",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "subpages/caredit",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "subpages/carport",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/index/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
@@ -91,20 +22,13 @@
                 {
                     "name": "",
                     "pathName": "subpages/carport-detail",
-                    "query": "name=遵化如意停车场&price=9.8&address=河北省遵化市遵化东高速高速口&description=本停车场现有大量停车位&can_rent=true&rent_price=880",
+                    "query": "carport=%7B%22id%22%3A1%2C%22name%22%3A%22%E5%B9%BF%E4%B8%9C%E8%B4%A2%E7%BB%8F%E5%A4%A7%E5%AD%A6%E5%8D%8E%E5%95%86%E5%AD%A6%E9%99%A2%22%2C%22cover%22%3A%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2F%40vant%2Fassets%2Fipad.jpeg%22%2C%22description%22%3A%22%E6%9A%82%E5%8F%AA%E9%92%88%E5%AF%B9%E5%9B%BD%E5%86%85%E4%B8%BB%E4%BD%93%E4%B8%94%E5%85%B7%E5%A4%87%E4%B8%8E%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE%E5%BC%BA%E7%9B%B8%E5%85%B3%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E7%9A%84%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E6%94%BE%EF%BC%8C%E5%9C%A8%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0%EF%BC%8C%E3%80%8C%E5%BC%80%E5%8F%91%E3%80%8D-%E3%80%8C%E5%BC%80%E5%8F%91%E7%AE%A1%E7%90%86%E3%80%8D-%E3%80%8C%E6%8E%A5%E5%8F%A3%E8%AE%BE%E7%BD%AE%E3%80%8D%E4%B8%AD%E8%87%AA%E5%8A%A9%E5%BC%80%E9%80%9A%E8%AF%A5%E6%8E%A5%E5%8F%A3%E6%9D%83%E9%99%90%E3%80%82%22%2C%22status%22%3A1%2C%22price%22%3A10%2C%22time%22%3A%222020-10-10%2012%3A13%22%7D&status=1",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "",
-                    "pathName": "subpages/result",
-                    "query": "carport=%7B%22name%22%3A%22%E9%81%B5%E5%8C%96%E5%A6%82%E6%84%8F%E5%81%9C%E8%BD%A6%E5%9C%BA%22%2C%22price%22%3A%229.8%22%2C%22address%22%3A%22%E6%B2%B3%E5%8C%97%E7%9C%81%E9%81%B5%E5%8C%96%E5%B8%82%E9%81%B5%E5%8C%96%E4%B8%9C%E9%AB%98%E9%80%9F%E9%AB%98%E9%80%9F%E5%8F%A3%22%2C%22description%22%3A%22%E6%9C%AC%E5%81%9C%E8%BD%A6%E5%9C%BA%E7%8E%B0%E6%9C%89%E5%A4%A7%E9%87%8F%E5%81%9C%E8%BD%A6%E4%BD%8D%22%2C%22can_rent%22%3A%22true%22%2C%22rent_price%22%3A%22880%22%7D",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "subpages/login",
+                    "pathName": "pages/index/index",
                     "query": "",
                     "scene": null,
                     "launchMode": "default"

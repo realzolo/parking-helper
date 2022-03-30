@@ -8,17 +8,17 @@
 		<view class="home_wrapper">
 			<view class="nav_wrapper">
 				<view class="row row_1">
-					<navigator url="/subpages/carport?method=all" open-type="navigate" class="col">
+					<navigator url="/subpages/carports?method=all" open-type="navigate" class="col">
 						<text>找车位</text>
 						<image src="@/static/image/search.svg"></image>
 					</navigator>
-					<navigator url="/subpages/carport?method=near" open-type="navigate" class="col">
+					<navigator url="/subpages/carports?method=near" open-type="navigate" class="col">
 						<text>附近3KM停车场</text>
 						<image src="@/static/image/park.svg"></image>
 					</navigator>
 				</view>
 				<view class="row row_2">
-					<navigator url="/subpages/carport?method=rent" open-type="navigate"  class="col">
+					<navigator url="/subpages/carports?method=rent" open-type="navigate" class="col">
 						<text>租车位</text>
 						<image src="@/static/image/rent.svg"></image>
 					</navigator>
@@ -48,7 +48,7 @@
 			</view>
 			<view class="rmd_wrapper">
 				<view class="rmd_title">系统推荐</view>
-				<navigator class="rmd_item" v-for="item in recommends" :url="item.to" :key="id">
+				<navigator :url="`/subpages/preview?carports=${JSON.stringify(item)}`" open-type="navigate" class="rmd_item" v-for="item in recommends" :key="id">
 					<view class="rmd_item_top">
 						<text>{{ item.name }}</text>
 						<view class="rmd_item_top_nav">
@@ -70,33 +70,60 @@ export default {
 			banners: [
 				{
 					id: 1,
-					name: '',
-					src: 'https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3931/202203272035786.png'
+					name: "",
+					src: "https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3931/202203272035786.png"
 				},
 				{
 					id: 2,
-					name: '',
-					src: 'https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3931/202203272035786.png'
+					name: "",
+					src: "https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3931/202203272035786.png"
 				}
 			],
 			recommends: [
 				{
 					id: 1,
-					name: '停车场',
-					address: '甘肃省 武威市 民勤县',
-					distance: '431M'
+					name: "遵化如意停车场",
+					price: "9.8",
+					address: "河北省遵化市遵化东高速高速口",
+					longitude: 108.94712,
+					latitude: 34.39318,
+					description: "本停车场现有大量停车位，物流园建设中，修车，住宿，餐饮,一应俱全。",
+					residue: 99,
+					images: [
+						"http://pic6.58cdn.com.cn/mobile/small/n_v229972578815d46a7ae8dde22014d746e.jpg",
+						"http://pic5.58cdn.com.cn/hbgsydcpostpc/n_v2198955e6989e431d8a3c1fc7de661ac4.jpg"
+					],
+					can_rent: true,
+					rent_price: 600
 				},
 				{
 					id: 2,
-					name: '草滩停车场',
-					address: '西安交通大学城市学院',
-					distance: '232M'
+					name: "红运停车场",
+					price: "9.8",
+					address: "武汉市东西湖区高桥五路",
+					longitude: 108.94712,
+					latitude: 34.49318,
+					description: "本停车场现有大量停车位，物流园建设中，修车，住宿，餐饮,一应俱全。",
+					residue: 99,
+					images: [
+						"http://pic5.58cdn.com.cn/hbgsydcpostpc/n_v2198955e6989e431d8a3c1fc7de661ac4.jpg",
+						"http://pic6.58cdn.com.cn/mobile/small/n_v229972578815d46a7ae8dde22014d746e.jpg"
+					],
+					can_rent: false,
+					rent_price: 600
 				},
 				{
 					id: 3,
-					name: '停车场',
-					address: '黑龙江省 大兴安岭地区 呼玛县',
-					distance: '21M'
+					name: "山东潍坊诸城翔鹤家具经营部",
+					price: "9.8",
+					address: "山东潍坊诸城密州街道普桥村西",
+					longitude: 108.94712,
+					latitude: 34.29318,
+					description: "本停车场现有大量停车位，物流园建设中，修车，住宿，餐饮,一应俱全。",
+					residue: 99,
+					images: ["http://pic3.58cdn.com.cn/p1/small/n_v2ef4d85b099604378a502e9b0dfbbd5f4.jpg", "http://pic6.58cdn.com.cn/mobile/small/n_v229972578815d46a7ae8dde22014d746e.jpg"],
+					can_rent: true,
+					rent_price: 600
 				}
 			]
 		};
@@ -147,36 +174,36 @@ export default {
 			font-weight: bold;
 			margin-bottom: 25rpx;
 		}
-		.rmd_item{
+		.rmd_item {
 			margin: 10rpx 0;
 			padding: 15rpx;
 			height: 130rpx;
-			background-color: #FFFFFF;
+			background-color: #ffffff;
 			border-radius: 10rpx;
-			.rmd_item_top{
+			.rmd_item_top {
 				display: flex;
 				justify-content: space-between;
 				margin-bottom: 15rpx;
-				text{
+				text {
 					font-weight: bold;
 					font-size: 34rpx;
 				}
-				.rmd_item_top_nav{
+				.rmd_item_top_nav {
 					display: flex;
 					align-items: center;
-					text{
+					text {
 						font-weight: normal;
 						font-size: 30rpx;
 						color: $uni-text-color-grey;
 					}
-					image{
+					image {
 						width: 60rpx;
 						height: 60rpx;
 						margin-left: 10rpx;
 					}
 				}
 			}
-			.rmd_item_bottom{
+			.rmd_item_bottom {
 				font-size: 30rpx;
 				color: $uni-text-color-grey;
 			}

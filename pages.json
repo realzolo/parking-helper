@@ -14,7 +14,7 @@
 				"enablePullDownRefresh": false
 			}
 		}, {
-			"path": "pages/order/order",
+			"path": "pages/orders/orders",
 			"style": {
 				"navigationBarTitleText": "订单",
 				"enablePullDownRefresh": false
@@ -54,15 +54,15 @@
 				"enablePullDownRefresh": false
 			}
 		}, {
-			"path": "carport",
+			"path": "carports",
 			"style": {
 				"navigationBarTitleText": "车库列表",
 				"enablePullDownRefresh": false
 			}
 		}, {
-			"path": "carport-detail",
+			"path": "order",
 			"style": {
-				"navigationBarTitleText": "车位详情",
+				"navigationBarTitleText": "订单详情",
 				"enablePullDownRefresh": false
 			}
 		}, {
@@ -81,6 +81,12 @@
 			"path": "login",
 			"style": {
 				"navigationBarTitleText": "用户登录",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "preview",
+			"style": {
+				"navigationBarTitleText": "车位信息",
 				"enablePullDownRefresh": false
 			}
 		}]
@@ -123,7 +129,7 @@
 			"selectedIconPath": "static/image/stall-active.png",
 			"text": "车位"
 		}, {
-			"pagePath": "pages/order/order",
+			"pagePath": "pages/orders/orders",
 			"iconPath": "static/image/order.png",
 			"selectedIconPath": "static/image/order-active.png",
 			"text": "订单"

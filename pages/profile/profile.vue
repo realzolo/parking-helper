@@ -57,7 +57,7 @@ export default {
 				{ id: 3, name: "积分", icon: "discount", to: "/subpages/point/point" }
 			],
 			options: [
-				{ id: 1, name: "我的订单", icon: "orders-o", to: "/pages/order/order" },
+				{ id: 1, name: "我的订单", icon: "orders-o", to: "/pages/orders/orders" },
 				{ id: 2, name: "车辆管理", icon: "font-o", to: "/subpages/carlist" },
 				{ id: 3, name: "停车记录", icon: "completed", to: "/pages/index/index" }
 				// { id: 4, name: "我要投诉", icon: "service-o", to: "/pages/index/index" },

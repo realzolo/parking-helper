@@ -23,7 +23,7 @@ export default {
 	methods: {
 		toOrderPage() {
 			uni.switchTab({
-				url: "/pages/order/order"
+				url: "/pages/orders/orders"
 			});
 		},
 		getCurrentTime() {

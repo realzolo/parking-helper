@@ -70,7 +70,7 @@
   margin: 10rpx 0;
   padding: 15rpx;
   height: 130rpx;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 10rpx;
 }
 .home_wrapper .rmd_wrapper .rmd_item .rmd_item_top.data-v-57280228 {

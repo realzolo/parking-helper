@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import Notify from "@/wxcomponents/vant/dist/notify/notify";
 export default {
 	data() {
 		return {
@@ -35,7 +34,7 @@ export default {
 			const { plateNo, owner, phone } = this.carInfo;
 			if (operation === "save") {
 				if (!plateNo.trim() || !owner.trim() || !phone.trim()) {
-					Notify({ type: "warning", message: "请将内容填写完整!" });
+					this.$notify({ type: "warning", message: "请将内容填写完整!" });
 					return;
 				}
 			}

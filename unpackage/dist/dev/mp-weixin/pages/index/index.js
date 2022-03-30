@@ -109,6 +109,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var l0 = _vm.__map(_vm.recommends, function(item, __i1__) {
+    var $orig = _vm.__get_orig(item)
+
+    var g0 = JSON.stringify(item)
+    return {
+      $orig: $orig,
+      g0: g0
+    }
+  })
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        l0: l0
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -212,33 +230,60 @@ var _default =
       banners: [
       {
         id: 1,
-        name: '',
-        src: 'https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3931/202203272035786.png' },
+        name: "",
+        src: "https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3931/202203272035786.png" },
 
       {
         id: 2,
-        name: '',
-        src: 'https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3931/202203272035786.png' }],
+        name: "",
+        src: "https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3931/202203272035786.png" }],
 
 
       recommends: [
       {
         id: 1,
-        name: '停车场',
-        address: '甘肃省 武威市 民勤县',
-        distance: '431M' },
+        name: "遵化如意停车场",
+        price: "9.8",
+        address: "河北省遵化市遵化东高速高速口",
+        longitude: 108.94712,
+        latitude: 34.39318,
+        description: "本停车场现有大量停车位，物流园建设中，修车，住宿，餐饮,一应俱全。",
+        residue: 99,
+        images: [
+        "http://pic6.58cdn.com.cn/mobile/small/n_v229972578815d46a7ae8dde22014d746e.jpg",
+        "http://pic5.58cdn.com.cn/hbgsydcpostpc/n_v2198955e6989e431d8a3c1fc7de661ac4.jpg"],
+
+        can_rent: true,
+        rent_price: 600 },
 
       {
         id: 2,
-        name: '草滩停车场',
-        address: '西安交通大学城市学院',
-        distance: '232M' },
+        name: "红运停车场",
+        price: "9.8",
+        address: "武汉市东西湖区高桥五路",
+        longitude: 108.94712,
+        latitude: 34.49318,
+        description: "本停车场现有大量停车位，物流园建设中，修车，住宿，餐饮,一应俱全。",
+        residue: 99,
+        images: [
+        "http://pic5.58cdn.com.cn/hbgsydcpostpc/n_v2198955e6989e431d8a3c1fc7de661ac4.jpg",
+        "http://pic6.58cdn.com.cn/mobile/small/n_v229972578815d46a7ae8dde22014d746e.jpg"],
+
+        can_rent: false,
+        rent_price: 600 },
 
       {
         id: 3,
-        name: '停车场',
-        address: '黑龙江省 大兴安岭地区 呼玛县',
-        distance: '21M' }] };
+        name: "山东潍坊诸城翔鹤家具经营部",
+        price: "9.8",
+        address: "山东潍坊诸城密州街道普桥村西",
+        longitude: 108.94712,
+        latitude: 34.29318,
+        description: "本停车场现有大量停车位，物流园建设中，修车，住宿，餐饮,一应俱全。",
+        residue: 99,
+        images: ["http://pic3.58cdn.com.cn/p1/small/n_v2ef4d85b099604378a502e9b0dfbbd5f4.jpg", "http://pic6.58cdn.com.cn/mobile/small/n_v229972578815d46a7ae8dde22014d746e.jpg"],
+        can_rent: true,
+        rent_price: 600 }] };
 
 
 
