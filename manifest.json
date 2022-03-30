@@ -1,5 +1,5 @@
 {
-    "name" : "quick-park",
+    "name" : "quick-stop",
     "appid" : "__UNI__E9E6F57",
     "description" : "",
     "versionName" : "1.0.0",
@@ -56,7 +56,7 @@
             "es6" : true,
             "postcss" : true,
             "minified" : true,
-						"checkSiteMap": false
+            "checkSiteMap" : false
         },
         "usingComponents" : true,
         "permission" : {

@@ -2,7 +2,7 @@
 	<view class="wrapper">
 		<van-toast id="van-toast" />
 		<view class="header">
-			<view class="header_top">
+			<navigator url="/subpage/profile" open-type="navigate" class="header_top">
 				<van-image class="profile_image" round width="112rpx" height="112rpx" :src="userInfo.avatar" fit="cover" />
 				<view class="profile_info">
 					<view class="profile_info_left">
@@ -11,7 +11,7 @@
 					</view>
 					<view class="profile_info_right"><van-icon name="arrow" color="#c8c9cc" size="30rpx" /></view>
 				</view>
-			</view>
+			</navigator>
 			<view class="header_bottom">
 				<navigator :url="item.to" open-type="navigate" v-for="item in metadata" :key="id" class="item">
 					<text>{{ item.count }}</text>

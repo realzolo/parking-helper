@@ -30,6 +30,13 @@
                     "name": "",
                     "pathName": "pages/index/index",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/orders/orders",
+                    "query": "",
                     "scene": null,
                     "launchMode": "default"
                 }

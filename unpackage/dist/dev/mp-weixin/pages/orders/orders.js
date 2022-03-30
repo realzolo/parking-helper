@@ -262,19 +262,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 var _constant = __webpack_require__(/*! @/utils/constant */ 39); //
 //
 //
@@ -332,20 +319,12 @@ var _constant = __webpack_require__(/*! @/utils/constant */ 39); //
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = { data: function data() {return { ORDER_STATUS: 0, active: 0, orders: [{ id: 1, name: "广东财经大学华商学院", cover: "https://cdn.jsdelivr.net/npm/@vant/assets/ipad.jpeg", description: "暂只针对国内主体且具备与地理位置强相关的使用场景的小程序开放，在小程序管理后台，「开发」-「开发管理」-「接口设置」中自助开通该接口权限。", status: _constant.ORDER_STATUS.USING, price: 10.0, time: "2020-10-10 12:13" }, { id: 2, name: "湖北工业大学", cover: "https://cdn.jsdelivr.net/npm/@vant/assets/ipad.jpeg", description: "暂只针对国内主体且具备与地理位置强相关的使用场景的小程序开放，在小程序管理后台，「开发」-「开发管理」-「接口设置」中自助开通该接口权限。", status: _constant.ORDER_STATUS.EVALUATE, price: 20.0, time: "2020-10-10 12:13" }, { id: 3, name: "湖北文理学院", cover: "https://cdn.jsdelivr.net/npm/@vant/assets/ipad.jpeg", description: "暂只针对国内主体且具备与地理位置强相关的使用场景的小程序开放，在小程序管理后台，「开发」-「开发管理」-「接口设置」中自助开通该接口权限。", status: _constant.ORDER_STATUS.CANCELED, price: 140.0, time: "2020-10-10 12:13" }, { id: 4, name: "天津机电职业技术学院", cover: "https://cdn.jsdelivr.net/npm/@vant/assets/ipad.jpeg", description: "暂只针对国内主体且具备与地理位置强相关的使用场景的小程序开放，在小程序管理后台，「开发」-「开发管理」-「接口设置」中自助开通该接口权限。", status: _constant.ORDER_STATUS.PREFECT, price: 140.0, time: "2020-10-10 12:13" }, { id: 5, name: "徐州工程学院", cover: "https://cdn.jsdelivr.net/npm/@vant/assets/ipad.jpeg", description: "暂只针对国内主体且具备与地理位置强相关的使用场景的小程序开放，在小程序管理后台，「开发」-「开发管理」-「接口设置」中自助开通该接口权限。", status: _constant.ORDER_STATUS.USING, price: 8.0, time: "2020-10-10 12:13" }] };}, created: function created() {this.ORDER_STATUS = _constant.ORDER_STATUS;}, methods: { subDescription: function subDescription(str) {return str.length <= 30 ? str : str.substring(0, 30) + "...";} } };exports.default = _default;
+var _default = { data: function data() {return { ORDER_STATUS: 0, active: 0, orders: [{ id: 1, name: "广东财经大学华商学院", cover: "https://cdn.jsdelivr.net/npm/@vant/assets/ipad.jpeg", description: "暂只针对国内主体且具备与地理位置强相关的使用场景的小程序开放，在小程序管理后台，「开发」-「开发管理」-「接口设置」中自助开通该接口权限。", status: _constant.ORDER_STATUS.USING, price: 10.0, time: "2020-10-10 12:13" }, { id: 2, name: "湖北工业大学", cover: "https://cdn.jsdelivr.net/npm/@vant/assets/ipad.jpeg", description: "暂只针对国内主体且具备与地理位置强相关的使用场景的小程序开放，在小程序管理后台，「开发」-「开发管理」-「接口设置」中自助开通该接口权限。", status: _constant.ORDER_STATUS.EVALUATE, price: 20.0, time: "2020-10-10 12:13" }, { id: 3, name: "湖北文理学院", cover: "https://cdn.jsdelivr.net/npm/@vant/assets/ipad.jpeg", description: "暂只针对国内主体且具备与地理位置强相关的使用场景的小程序开放，在小程序管理后台，「开发」-「开发管理」-「接口设置」中自助开通该接口权限。", status: _constant.ORDER_STATUS.CANCELED, price: 140.0, time: "2020-10-10 12:13" }, { id: 4, name: "天津机电职业技术学院", cover: "https://cdn.jsdelivr.net/npm/@vant/assets/ipad.jpeg", description: "暂只针对国内主体且具备与地理位置强相关的使用场景的小程序开放，在小程序管理后台，「开发」-「开发管理」-「接口设置」中自助开通该接口权限。", status: _constant.ORDER_STATUS.PREFECT, price: 140.0, time: "2020-10-10 12:13" }, { id: 5, name: "徐州工程学院", cover: "https://cdn.jsdelivr.net/npm/@vant/assets/ipad.jpeg", description: "暂只针对国内主体且具备与地理位置强相关的使用场景的小程序开放，在小程序管理后台，「开发」-「开发管理」-「接口设置」中自助开通该接口权限。", status: _constant.ORDER_STATUS.USING, price: 8.0, time: "2020-10-10 12:13" }] };}, created: function created() {this.ORDER_STATUS = _constant.ORDER_STATUS;
+  },
+  methods: {
+    subDescription: function subDescription(str) {
+      return str.length <= 30 ? str : str.substring(0, 30) + "...";
+    } } };exports.default = _default;
 
 /***/ }),
 

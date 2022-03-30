@@ -4,24 +4,22 @@
 			<van-tab title="全部">
 				<navigator :url="`/subpages/order?carport=${JSON.stringify(item)}`" open-type="navigate" v-for="item in orders" :key="id">
 					<van-card :price="item.price + '/时'" :desc="subDescription(item.description)" :title="item.name" :thumb="item.cover">
-						<view slot="footer">
-							<van-button type="warning" size="mini" v-show="item.status == ORDER_STATUS.USING">结束使用</van-button>
-							<van-button type="warning" size="mini" v-show="item.status == ORDER_STATUS.EVALUATE">立即评价</van-button>
-							<van-button type="warning" size="mini" v-show="item.status == ORDER_STATUS.CANCELED">删除订单</van-button>
+						<view slot="footer" class="item_footer">
+							<van-button plain round size="mini" color="#666666" v-show="item.status == ORDER_STATUS.USING">结束使用</van-button>
+							<van-button plain round size="mini" color="#666666" v-show="item.status == ORDER_STATUS.EVALUATE">立即评价</van-button>
+							<van-button plain round size="mini" color="#666666">删除订单</van-button>
+							<van-button type="warning" plain round size="mini">查看详情</van-button>
 						</view>
 					</van-card>
 				</navigator>
 			</van-tab>
 			<van-tab title="使用中">
-				<navigator
-					:url="`/subpages/order?carport=${JSON.stringify(item)}`"
-					open-type="navigate"
-					v-for="item in orders"
-					:key="id"
-					v-if="item.status == ORDER_STATUS.USING"
-				>
+				<navigator :url="`/subpages/order?carport=${JSON.stringify(item)}`" open-type="navigate" v-for="item in orders" :key="id" v-if="item.status == ORDER_STATUS.USING">
 					<van-card :price="item.price + '/时'" :desc="subDescription(item.description)" :title="item.name" :thumb="item.cover">
-						<view slot="footer"><van-button type="warning" size="mini">结束使用</van-button></view>
+						<view slot="footer" class="item_footer">
+							<van-button plain round size="mini" color="#666666" v-show="item.status == ORDER_STATUS.USING">结束使用</van-button>
+							<van-button type="warning" plain round size="mini">查看详情</van-button>
+						</view>
 					</van-card>
 				</navigator>
 			</van-tab>
@@ -34,33 +32,22 @@
 					v-if="item.status == ORDER_STATUS.PREFECT || item.status == ORDER_STATUS.EVALUATE"
 				>
 					<van-card :price="item.price + '/时'" :desc="subDescription(item.description)" :title="item.name" :thumb="item.cover">
-						<view slot="footer" v-if="item.status == ORDER_STATUS.EVALUATE"><van-button type="warning" size="mini">立即评价</van-button></view>
+						<view slot="footer" class="item_footer">
+							<van-button plain round size="mini" color="#666666" v-show="item.status == ORDER_STATUS.EVALUATE">立即评价</van-button>
+							<van-button plain round size="mini" color="#666666">删除订单</van-button>
+							<van-button type="warning" plain round size="mini">查看详情</van-button>
+						</view>
 					</van-card>
 				</navigator>
 			</van-tab>
-			<!-- <van-tab title="待评价">
-				<navigator
-					:url="`/subpages/order?carport=${JSON.stringify(item)}`"
-					open-type="navigate"
-					v-for="item in orders"
-					:key="id"
-					v-if="item.status == ORDER_STATUS.EVALUATE"
-				>
-					<van-card :price="item.price" :desc="subDescription(item.description)" :title="item.name" :thumb="item.cover">
-						<view slot="footer"><van-button type="warning" size="mini">立即评价</van-button></view>
-					</van-card>
-				</navigator>
-			</van-tab> -->
 			<van-tab title="已取消">
-				<navigator
-					:url="`/subpages/order?carport=${JSON.stringify(item)}`"
-					open-type="navigate"
-					v-for="item in orders"
-					:key="id"
-					v-if="item.status == ORDER_STATUS.CANCELED"
-				>
+				<navigator :url="`/subpages/order?carport=${JSON.stringify(item)}`" open-type="navigate" v-for="item in orders" :key="id" v-if="item.status == ORDER_STATUS.CANCELED">
 					<van-card :price="item.price + '/时'" :desc="subDescription(item.description)" :title="item.name" :thumb="item.cover">
-						<view slot="footer"><van-button type="warning" size="mini">删除订单</van-button></view>
+						<view slot="footer" class="item_footer">
+							<!-- 	<view style="float: left;">1</view> -->
+							<van-button plain round size="mini" color="#666666">删除订单</van-button>
+							<van-button type="warning" plain round size="mini">查看详情</van-button>
+						</view>
 					</van-card>
 				</navigator>
 			</van-tab>
@@ -137,7 +124,7 @@ export default {
 </script>
 
 <style scoped>
-.wrapper{
+.wrapper {
 	margin-bottom: 20rpx;
 }
 van-card::before {
@@ -147,5 +134,8 @@ van-card::before {
 }
 van-button {
 	margin-left: 10rpx;
+}
+.item_footer{
+	margin-top: 28rpx;
 }
 </style>

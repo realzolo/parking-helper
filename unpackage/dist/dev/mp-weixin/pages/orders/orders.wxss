@@ -1,5 +1,5 @@
 
-.wrapper.data-v-8a71bbb4{
+.wrapper.data-v-8a71bbb4 {
 	margin-bottom: 20rpx;
 }
 van-card.data-v-8a71bbb4::before {
@@ -9,5 +9,8 @@ van-card.data-v-8a71bbb4::before {
 }
 van-button.data-v-8a71bbb4 {
 	margin-left: 10rpx;
+}
+.item_footer.data-v-8a71bbb4{
+	margin-top: 28rpx;
 }
 

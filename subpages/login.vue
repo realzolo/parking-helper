@@ -34,7 +34,7 @@ export default {
 							// 		3.1 数据不存在：插入数据，给前端返回登陆成功
 							// 3. 后端将openid返回给前端，前端保存在storage中
 
-							uni.setStorage({
+							uni.setStorageSync({
 								key: "user_id",
 								data: "o7_pW5VjCgnTu-SEpal7q37xQyMs"
 							});

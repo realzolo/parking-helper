@@ -177,11 +177,12 @@ var _default =
     var carport = options.carport;
     if (carport) {
       this.carport = JSON.parse(carport);
+      console.log(this.carport);
       return;
     }
-    uni.navigateBack({
-      delta: 1 });
-
+    // uni.navigateBack({
+    // 	delta: 1
+    // });
   },
   methods: {
     createOrder: function createOrder() {var _this = this;

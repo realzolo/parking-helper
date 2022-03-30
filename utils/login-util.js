@@ -1,6 +1,6 @@
 const hasLogin = () => {
 	console.log("hasLogin");
-	uni.getStorage({
+	uni.getStorageSync({
 		key: "user_id",
 		fail(res) {
 			uni.redirectTo({

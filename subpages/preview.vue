@@ -45,11 +45,12 @@ export default {
 		const carport = options.carport;
 		if (carport) {
 			this.carport = JSON.parse(carport);
+			console.log(this.carport);
 			return;
 		}
-		uni.navigateBack({
-			delta: 1
-		});
+		// uni.navigateBack({
+		// 	delta: 1
+		// });
 	},
 	methods: {
 		createOrder() {

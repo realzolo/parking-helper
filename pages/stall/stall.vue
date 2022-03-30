@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<map name="" :latitude="location.latitude" :longitude="location.longitude"></map>
-		<button type="default" @click="getLocation()">getLocation</button>
+		<map></map>
+		<button open-type="getUserProfile">点我进行授权</button>
 	</view>
 </template>
 

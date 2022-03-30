@@ -89,6 +89,12 @@
 				"navigationBarTitleText": "车位信息",
 				"enablePullDownRefresh": false
 			}
+		}, {
+			"path": "profile",
+			"style": {
+				"navigationBarTitleText": "个人信息",
+				"enablePullDownRefresh": false
+			}
 		}]
 	}],
 	"globalStyle": {
