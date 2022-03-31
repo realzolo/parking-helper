@@ -10,13 +10,17 @@
 /* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ 5);var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 6));
 var _dialog = _interopRequireDefault(__webpack_require__(/*! ./wxcomponents/vant/dist/dialog/dialog */ 12));
 var _toast = _interopRequireDefault(__webpack_require__(/*! ./wxcomponents/vant/dist/toast/toast */ 13));
-var _loginUtil = _interopRequireDefault(__webpack_require__(/*! @/utils/login-util */ 15));
+var _notify = _interopRequireDefault(__webpack_require__(/*! ./wxcomponents/vant/dist/notify/notify */ 15));
+var _permission = _interopRequireDefault(__webpack_require__(/*! @/utils/permission */ 17));
+var _request = _interopRequireDefault(__webpack_require__(/*! @/utils/request */ 18));
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 3));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;
 _vue.default.config.productionTip = false;
 _vue.default.prototype.$dialog = _dialog.default;
 _vue.default.prototype.$toast = _toast.default;
-_vue.default.prototype.$hasLogin = _loginUtil.default;
+_vue.default.prototype.$notify = _notify.default;
+_vue.default.prototype.$hasLogin = _permission.default;
+_vue.default.prototype.$request = _request.default;
 _App.default.mpType = 'app';
 var app = new _vue.default(_objectSpread({},
 _App.default));
@@ -92,32 +96,14 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 {
   onLaunch: function onLaunch() {
-    console.log("App");
     // 用户登录判断
     this.$hasLogin();
-    // 获取并保存我的位置
-    this.getMyLocation();
   },
   onShow: function onShow() {},
-  onHide: function onHide() {},
-  methods: {
-    // 获取并保存我的位置
-    getMyLocation: function getMyLocation() {
-      uni.getLocation({
-        success: function success(res) {
-          var longitude = res.longitude;
-          var latitude = res.latitude;
-          uni.setStorage({
-            key: "my_location",
-            data: { longitude: longitude, latitude: latitude } });
-
-        } });
-
-    } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+  onHide: function onHide() {} };exports.default = _default;
 
 /***/ }),
 /* 9 */

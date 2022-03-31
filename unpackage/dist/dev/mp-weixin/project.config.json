@@ -20,7 +20,7 @@
         "checkInvalidKey": true,
         "checkSiteMap": false,
         "uploadWithSourceMap": true,
-        "compileHotReLoad": false,
+        "compileHotReLoad": true,
         "lazyloadPlaceholderEnable": false,
         "useMultiFrameRuntime": true,
         "useApiHook": true,
@@ -38,12 +38,13 @@
         "disableUseStrict": false,
         "showES6CompileOption": false,
         "useCompilerPlugins": false,
-        "ignoreUploadUnusedFiles": true
+        "ignoreUploadUnusedFiles": true,
+        "minifyWXML": true
     },
     "compileType": "miniprogram",
     "libVersion": "",
     "appid": "wxa5ce8313e99b6489",
-    "projectname": "quick-stop",
+    "projectname": "quick-park",
     "condition": {
         "search": {
             "list": []

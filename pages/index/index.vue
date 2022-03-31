@@ -1,7 +1,8 @@
 <template>
 	<view class="wrapper">
+		<van-notify id="van-notify" />
 		<view class="search_wrapper">
-			<van-search @focus="toSearch" placeholder="搜索附近停车场" background="transprent" shape="round" input-class="input-class" field-class="field-class" />
+			<view @click="toSearch"><van-search disabled placeholder="搜索附近停车场" background="transprent" shape="round" input-class="input-class" field-class="field-class" /></view>
 		</view>
 		<view class="map_wrapper">
 			<map
@@ -35,6 +36,7 @@ export default {
 		return {
 			canTarce: false,
 			location: {},
+			ok: false,
 			iconPath: "../../static/image/p.svg",
 			target: {},
 			isShortest: true,
@@ -43,18 +45,25 @@ export default {
 		};
 	},
 	onLoad() {
-		// 从缓存中拿到我的位置坐标
-		this.location = uni.getStorageSync("my_location");
-		// 根据我的坐标查找附近停车场
-		this.searchNearParkingLots();
+		// 拿到我的位置坐标
+		this.getLocation()
+			.then(location => {
+				this.searchNearParkingLots(location);
+			})
+			.catch(error => {
+				setTimeout(() => {
+					this.$notify({ type: "danger", message: "定位失败！请检查位置服务是否正常。" });
+				}, 1000);
+			});
 	},
+	onReady() {},
 	methods: {
-		searchNearParkingLots(myLat, mylng) {
+		searchNearParkingLots({ latitude, longitude }) {
 			uni.request({
 				url: "https://apis.map.qq.com/ws/place/v1/search",
 				data: {
 					keyword: "停车",
-					boundary: `nearby(${this.location.latitude},${this.location.longitude},1000,1)`,
+					boundary: `nearby(${latitude},${longitude},1000,1)`,
 					orderby: "_distance",
 					key: "FLQBZ-67GCW-7SHRW-OOOZQ-WCJA5-W3B2X"
 				},
@@ -69,6 +78,7 @@ export default {
 							longitude: data[i].location.lng,
 							latitude: data[i].location.lat,
 							address: data[i].address,
+							iconPath: this.iconPath,
 							width: 50,
 							height: 50
 						});
@@ -99,6 +109,26 @@ export default {
 			uni.navigateTo({
 				url: `/subpages/search?markers=${JSON.stringify(this.markers)}`
 			});
+		},
+		getLocation() {
+			return new Promise((resolve, reject) => {
+				uni.getLocation({
+					type: "gcj02",
+					cacheTimeout: 360,
+					accuracy: "best",
+					isHighAccuracy: true,
+					success: res => {
+						const location = {
+							longitude: res.longitude,
+							latitude: res.latitude
+						};
+						resolve(location);
+					},
+					fail: error => {
+						reject(error);
+					}
+				});
+			});
 		}
 	}
 };
@@ -110,7 +140,7 @@ export default {
 		position: absolute;
 		top: 40rpx;
 		width: 100vw;
-		z-index: 999;
+		z-index: 1;
 		van-search {
 			box-shadow: 10px 10px 5px #888888;
 		}
@@ -155,16 +185,6 @@ export default {
 			text-overflow: ellipsis;
 			white-space: nowrap;
 		}
-		// text {
-		// 	&:first-child {
-		// 		font-weight: bold;
-		// 		padding: 15rpx 0;
-		// 	}
-		// 	&:nth-child(2) {
-		// 		margin: 10rpx 0;
-		// 		color: $uni-text-color-grey;
-		// 	}
-		// }
 		van-button {
 			margin-top: 20rpx;
 		}

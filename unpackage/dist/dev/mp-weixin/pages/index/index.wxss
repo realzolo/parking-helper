@@ -28,7 +28,7 @@
   position: absolute;
   top: 40rpx;
   width: 100vw;
-  z-index: 999;
+  z-index: 1;
 }
 .wrapper .search_wrapper van-search.data-v-57280228 {
   box-shadow: 10px 10px 5px #888888;

@@ -73,19 +73,14 @@ export default {
 		};
 	},
 	onLoad() {
-		const that = this;
-		uni.getStorage({
-			key: "user_info",
-			success(res) {
-				that.userInfo = JSON.parse(res.data);
-			},
-			fail() {
-				console.log("Profile.vue");
-				uni.redirectTo({
-					url: "/subpages/login"
-				});
-			}
-		});
+		const userInfo = uni.getStorageSync("user_info");
+		if(!userInfo){
+			uni.redirectTo({
+				url: "/subpages/login"
+			});
+			return;
+		}
+		this.userInfo = JSON.parse(res.data);
 	},
 	methods: {
 		onClick(event) {
