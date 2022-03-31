@@ -17,7 +17,7 @@
 /* 15 */,
 /* 16 */
 /*!*************************************************************************!*\
-  !*** F:/wx-project/quick-stop/main.js?{"page":"pages%2Findex%2Findex"} ***!
+  !*** F:/wx-project/quick-park/main.js?{"page":"pages%2Findex%2Findex"} ***!
   \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -32,7 +32,7 @@ createPage(_index.default);
 /***/ }),
 /* 17 */
 /*!******************************************************!*\
-  !*** F:/wx-project/quick-stop/pages/index/index.vue ***!
+  !*** F:/wx-project/quick-park/pages/index/index.vue ***!
   \******************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -74,7 +74,7 @@ component.options.__file = "pages/index/index.vue"
 /***/ }),
 /* 18 */
 /*!*************************************************************************************************!*\
-  !*** F:/wx-project/quick-stop/pages/index/index.vue?vue&type=template&id=57280228&scoped=true& ***!
+  !*** F:/wx-project/quick-park/pages/index/index.vue?vue&type=template&id=57280228&scoped=true& ***!
   \*************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -95,7 +95,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 /* 19 */
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!F:/wx-project/quick-stop/pages/index/index.vue?vue&type=template&id=57280228&scoped=true& ***!
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!F:/wx-project/quick-park/pages/index/index.vue?vue&type=template&id=57280228&scoped=true& ***!
   \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -121,7 +121,7 @@ render._withStripped = true
 /***/ }),
 /* 20 */
 /*!*******************************************************************************!*\
-  !*** F:/wx-project/quick-stop/pages/index/index.vue?vue&type=script&lang=js& ***!
+  !*** F:/wx-project/quick-park/pages/index/index.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -136,7 +136,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 /* 21 */
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!F:/wx-project/quick-stop/pages/index/index.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!F:/wx-project/quick-park/pages/index/index.vue?vue&type=script&lang=js& ***!
   \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -149,82 +149,107 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
+      canTarce: false,
       location: {},
-      banners: [
-      {
-        id: 1,
-        name: "",
-        src: "https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3931/202203272035786.png" },
-
-      {
-        id: 2,
-        name: "",
-        src: "https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3931/202203272035786.png" }],
-
-
-      recommends: [
-      {
-        id: 1,
-        name: "遵化如意停车场",
-        price: "9.8",
-        address: "河北省遵化市遵化东高速高速口",
-        longitude: 108.94712,
-        latitude: 34.39318,
-        description: "本停车场现有大量停车位，物流园建设中，修车，住宿，餐饮,一应俱全。",
-        residue: 99,
-        images: [
-        "http://pic6.58cdn.com.cn/mobile/small/n_v229972578815d46a7ae8dde22014d746e.jpg",
-        "http://pic5.58cdn.com.cn/hbgsydcpostpc/n_v2198955e6989e431d8a3c1fc7de661ac4.jpg"],
-
-        can_rent: true,
-        rent_price: 600 },
-
-      {
-        id: 2,
-        name: "红运停车场",
-        price: "9.8",
-        address: "武汉市东西湖区高桥五路",
-        longitude: 108.94712,
-        latitude: 34.49318,
-        description: "本停车场现有大量停车位，物流园建设中，修车，住宿，餐饮,一应俱全。",
-        residue: 99,
-        images: [
-        "http://pic5.58cdn.com.cn/hbgsydcpostpc/n_v2198955e6989e431d8a3c1fc7de661ac4.jpg",
-        "http://pic6.58cdn.com.cn/mobile/small/n_v229972578815d46a7ae8dde22014d746e.jpg"],
-
-        can_rent: false,
-        rent_price: 600 },
-
-      {
-        id: 3,
-        name: "山东潍坊诸城翔鹤家具经营部",
-        price: "9.8",
-        address: "山东潍坊诸城密州街道普桥村西",
-        longitude: 108.94712,
-        latitude: 34.29318,
-        description: "本停车场现有大量停车位，物流园建设中，修车，住宿，餐饮,一应俱全。",
-        residue: 99,
-        images: ["http://pic3.58cdn.com.cn/p1/small/n_v2ef4d85b099604378a502e9b0dfbbd5f4.jpg", "http://pic6.58cdn.com.cn/mobile/small/n_v229972578815d46a7ae8dde22014d746e.jpg"],
-        can_rent: true,
-        rent_price: 600 }] };
-
-
+      iconPath: "../../static/image/p.svg",
+      target: {},
+      isShortest: true,
+      markers: [],
+      tempMarker: [] };
 
   },
   onLoad: function onLoad() {
+    // 从缓存中拿到我的位置坐标
     this.location = uni.getStorageSync("my_location");
+    // 根据我的坐标查找附近停车场
+    this.searchNearParkingLots();
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    searchNearParkingLots: function searchNearParkingLots(myLat, mylng) {var _this = this;
+      uni.request({
+        url: "https://apis.map.qq.com/ws/place/v1/search",
+        data: {
+          keyword: "停车",
+          boundary: "nearby(".concat(this.location.latitude, ",").concat(this.location.longitude, ",1000,1)"),
+          orderby: "_distance",
+          key: "FLQBZ-67GCW-7SHRW-OOOZQ-WCJA5-W3B2X" },
+
+        success: function success(res) {var
+          data = res.data.data;
+          _this.target = { title: data[0].title, address: data[0].address, longitude: data[0].location.lng, latitude: data[0].location.lat, width: 50, height: 50 };
+          _this.canTarce = true;
+          for (var i = 0; i < data.length; i++) {
+            _this.markers.push({
+              id: Number.parseInt(data[i].id.substring(0, 8)),
+              title: data[i].title,
+              longitude: data[i].location.lng,
+              latitude: data[i].location.lat,
+              address: data[i].address,
+              width: 50,
+              height: 50 });
+
+          }
+        } });
+
+    },
+    onTrace: function onTrace() {
+      var plugin = requirePlugin("routePlan");
+      var key = "FLQBZ-67GCW-7SHRW-OOOZQ-WCJA5-W3B2X";
+      var referer = "quick-park";
+      var endPoint = JSON.stringify({
+        name: this.target.title,
+        navigation: 1,
+        latitude: this.target.latitude,
+        longitude: this.target.longitude });
+
+      uni.navigateTo({
+        url: "plugin://routePlan/index?key=" + key + "&referer=" + referer + "&endPoint=" + endPoint });
+
+    },
+    toMarkerForm: function toMarkerForm(e) {var
+      markerId = e.detail.markerId;
+      this.target = this.markers.filter(function (e) {return e.id == markerId;})[0];
+      this.isShortest = false;
+    },
+    toSearch: function toSearch() {
+      uni.navigateTo({
+        url: "/subpages/search?markers=".concat(JSON.stringify(this.markers)) });
+
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 22 */
 /*!****************************************************************************************************************!*\
-  !*** F:/wx-project/quick-stop/pages/index/index.vue?vue&type=style&index=0&id=57280228&lang=scss&scoped=true& ***!
+  !*** F:/wx-project/quick-park/pages/index/index.vue?vue&type=style&index=0&id=57280228&lang=scss&scoped=true& ***!
   \****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -239,7 +264,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 /* 23 */
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--8-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-2!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/sass-loader/dist/cjs.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!F:/wx-project/quick-stop/pages/index/index.vue?vue&type=style&index=0&id=57280228&lang=scss&scoped=true& ***!
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--8-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-2!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/sass-loader/dist/cjs.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!F:/wx-project/quick-park/pages/index/index.vue?vue&type=style&index=0&id=57280228&lang=scss&scoped=true& ***!
   \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -251,7 +276,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 /* 24 */
 /*!***************************************************************************************!*\
-  !*** F:/wx-project/quick-stop/pages/index/index.vue?vue&type=style&index=1&lang=css& ***!
+  !*** F:/wx-project/quick-park/pages/index/index.vue?vue&type=style&index=1&lang=css& ***!
   \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -266,7 +291,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 /* 25 */
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!F:/wx-project/quick-stop/pages/index/index.vue?vue&type=style&index=1&lang=css& ***!
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!F:/wx-project/quick-park/pages/index/index.vue?vue&type=style&index=1&lang=css& ***!
   \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {

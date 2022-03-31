@@ -1,6 +1,9 @@
 <template>
-	<view>
-		<map style="height: 100vh;"></map>
+	<view class="wrapper">
+	 <text>暂</text>
+	 <text>无</text>
+	 <text>内</text>
+	 <text>容</text>
 	</view>
 </template>
 
@@ -63,4 +66,12 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+	.wrapper{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		font-size: 200rpx;
+	}
+</style>

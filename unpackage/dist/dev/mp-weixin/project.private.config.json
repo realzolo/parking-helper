@@ -37,6 +37,13 @@
                     "name": "",
                     "pathName": "pages/orders/orders",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/search",
+                    "query": "markers=%5B%5D",
                     "scene": null,
                     "launchMode": "default"
                 }

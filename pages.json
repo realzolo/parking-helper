@@ -95,6 +95,12 @@
 				"navigationBarTitleText": "个人信息",
 				"enablePullDownRefresh": false
 			}
+		}, {
+			"path": "search",
+			"style": {
+				"navigationBarTitleText": "快速搜索",
+				"enablePullDownRefresh": false
+			}
 		}]
 	}],
 	"globalStyle": {
@@ -117,7 +123,8 @@
 			"van-submit-bar": "/wxcomponents/vant/dist/submit-bar/index",
 			"van-dialog": "/wxcomponents/vant/dist/dialog/index",
 			"van-toast": "/wxcomponents/vant/dist/toast/index",
-			"van-search": "/wxcomponents/vant/dist/search/index"
+			"van-search": "/wxcomponents/vant/dist/search/index",
+			"van-tag": "/wxcomponents/vant/dist/tag/index"
 		}
 	},
 	"tabBar": {
@@ -146,5 +153,16 @@
 			"selectedIconPath": "static/image/profile-active.png",
 			"text": "我的"
 		}]
+	},
+	"plugins": {
+		"routePlan": {
+			"version": "1.0.19",
+			"provider": "wx50b5593e81dd937a"
+		}
+	},
+	"permission": {
+		"scope.userLocation": {
+			"desc": "你的位置信息将用于小程序定位"
+		}
 	}
 }

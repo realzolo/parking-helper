@@ -8636,7 +8636,7 @@ function resolveLocaleChain(locale) {
 /***/ }),
 /* 5 */
 /*!*******************************************!*\
-  !*** F:/wx-project/quick-stop/pages.json ***!
+  !*** F:/wx-project/quick-park/pages.json ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -8779,7 +8779,7 @@ function normalizeComponent (
 /***/ }),
 /* 12 */
 /*!************************************************************************!*\
-  !*** F:/wx-project/quick-stop/wxcomponents/vant/dist/dialog/dialog.js ***!
+  !*** F:/wx-project/quick-park/wxcomponents/vant/dist/dialog/dialog.js ***!
   \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -8864,7 +8864,7 @@ Dialog;exports.default = _default;
 /***/ }),
 /* 13 */
 /*!**********************************************************************!*\
-  !*** F:/wx-project/quick-stop/wxcomponents/vant/dist/toast/toast.js ***!
+  !*** F:/wx-project/quick-park/wxcomponents/vant/dist/toast/toast.js ***!
   \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -8940,7 +8940,7 @@ Toast;exports.default = _default;
 /***/ }),
 /* 14 */
 /*!***************************************************************************!*\
-  !*** F:/wx-project/quick-stop/wxcomponents/vant/dist/common/validator.js ***!
+  !*** F:/wx-project/quick-park/wxcomponents/vant/dist/common/validator.js ***!
   \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -8981,7 +8981,7 @@ function isVideoUrl(url) {
 /***/ }),
 /* 15 */
 /*!****************************************************!*\
-  !*** F:/wx-project/quick-stop/utils/login-util.js ***!
+  !*** F:/wx-project/quick-park/utils/login-util.js ***!
   \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -9813,9 +9813,11 @@ if (hadRuntime) {
 /* 38 */,
 /* 39 */,
 /* 40 */,
-/* 41 */
+/* 41 */,
+/* 42 */,
+/* 43 */
 /*!**************************************************!*\
-  !*** F:/wx-project/quick-stop/utils/constant.js ***!
+  !*** F:/wx-project/quick-park/utils/constant.js ***!
   \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
