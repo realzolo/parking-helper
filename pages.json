@@ -1,16 +1,16 @@
 {
-
+	"lazyCodeLoading": "requiredComponents",
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "首页",
+				"navigationBarTitleText": "地图",
 				"enablePullDownRefresh": false
 			}
 		}, {
-			"path": "pages/stall/stall",
+			"path": "pages/nearby/nearby",
 			"style": {
-				"navigationBarTitleText": "车位",
+				"navigationBarTitleText": "附近",
 				"enablePullDownRefresh": false
 			}
 		}, {
@@ -42,13 +42,13 @@
 				"enablePullDownRefresh": false
 			}
 		}, {
-			"path": "carlist",
+			"path": "car-list",
 			"style": {
 				"navigationBarTitleText": "车辆管理",
 				"enablePullDownRefresh": false
 			}
 		}, {
-			"path": "caredit",
+			"path": "car-edit",
 			"style": {
 				"navigationBarTitleText": "编辑车辆信息",
 				"enablePullDownRefresh": false
@@ -101,6 +101,18 @@
 				"navigationBarTitleText": "快速搜索",
 				"enablePullDownRefresh": false
 			}
+		}, {
+			"path": "carport-list",
+			"style": {
+				"navigationBarTitleText": "我的车位",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "carport-edit",
+			"style": {
+				"navigationBarTitleText": "编辑信息",
+				"enablePullDownRefresh": false
+			}
 		}]
 	}],
 	"globalStyle": {
@@ -136,12 +148,12 @@
 			"pagePath": "pages/index/index",
 			"iconPath": "static/image/home.png",
 			"selectedIconPath": "static/image/home-active.png",
-			"text": "首页"
+			"text": "地图"
 		}, {
-			"pagePath": "pages/stall/stall",
+			"pagePath": "pages/nearby/nearby",
 			"iconPath": "static/image/stall.png",
 			"selectedIconPath": "static/image/stall-active.png",
-			"text": "车位"
+			"text": "附近"
 		}, {
 			"pagePath": "pages/orders/orders",
 			"iconPath": "static/image/order.png",

@@ -51,6 +51,34 @@
                     "name": "",
                     "pathName": "subpages/search",
                     "query": "markers=%5B%5D",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/nearby/nearby",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/preview",
+                    "query": "carport=%7B%22id%22%3A2%2C%22name%22%3A%22%E7%BA%A2%E8%BF%90%E5%81%9C%E8%BD%A6%E5%9C%BA%22%2C%22price%22%3A%229.8%22%2C%22address%22%3A%22%E6%AD%A6%E6%B1%89%E5%B8%82%E4%B8%9C%E8%A5%BF%E6%B9%96%E5%8C%BA%E9%AB%98%E6%A1%A5%E4%BA%94%E8%B7%AF%22%2C%22longitude%22%3A108.94712%2C%22latitude%22%3A34.49318%2C%22description%22%3A%22%E6%9C%AC%E5%81%9C%E8%BD%A6%E5%9C%BA%E7%8E%B0%E6%9C%89%E5%A4%A7%E9%87%8F%E5%81%9C%E8%BD%A6%E4%BD%8D%EF%BC%8C%E7%89%A9%E6%B5%81%E5%9B%AD%E5%BB%BA%E8%AE%BE%E4%B8%AD%EF%BC%8C%E4%BF%AE%E8%BD%A6%EF%BC%8C%E4%BD%8F%E5%AE%BF%EF%BC%8C%E9%A4%90%E9%A5%AE%2C%E4%B8%80%E5%BA%94%E4%BF%B1%E5%85%A8%E3%80%82%22%2C%22residue%22%3A99%2C%22images%22%3A%5B%22http%3A%2F%2Fpic5.58cdn.com.cn%2Fhbgsydcpostpc%2Fn_v2198955e6989e431d8a3c1fc7de661ac4.jpg%22%2C%22http%3A%2F%2Fpic6.58cdn.com.cn%2Fmobile%2Fsmall%2Fn_v229972578815d46a7ae8dde22014d746e.jpg%22%5D%2C%22can_rent%22%3Afalse%2C%22rent_price%22%3A600%7D",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/carport-list",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/profile/profile",
+                    "query": "",
                     "scene": null,
                     "launchMode": "default"
                 }

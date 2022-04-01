@@ -25,7 +25,7 @@
 			<view class="target_address_wrapper">
 				<text>{{ target.address }}</text>
 			</view>
-			<van-button type="info" icon="guide-o" round block @click="onTrace()">到这去</van-button>
+			<van-button type="info" icon="guide-o" round block @click="onTrace">到这去</van-button>
 		</view>
 	</view>
 </template>
@@ -44,19 +44,21 @@ export default {
 			tempMarker: []
 		};
 	},
-	onLoad() {
-		// 拿到我的位置坐标
-		this.getLocation()
-			.then(location => {
-				this.searchNearParkingLots(location);
-			})
-			.catch(error => {
-				setTimeout(() => {
-					this.$notify({ type: "danger", message: "定位失败！请检查位置服务是否正常。" });
-				}, 1000);
-			});
+	// onLoad() {
+	// 	// 拿到我的位置坐标,然后搜寻附近停车点
+	// 	this.getLocation()
+	// 		.then(location => {
+	// 			this.searchNearParkingLots(location);
+	// 		})
+	// 		.catch(error => {
+	// 			setTimeout(() => {
+	// 				this.$notify({ type: "danger", message: "定位失败！请检查位置服务是否正常。" });
+	// 			}, 1000);
+	// 		});
+	// },
+	onReady() {
+		this.$hasLogin();
 	},
-	onReady() {},
 	methods: {
 		searchNearParkingLots({ latitude, longitude }) {
 			uni.request({
@@ -78,7 +80,7 @@ export default {
 							longitude: data[i].location.lng,
 							latitude: data[i].location.lat,
 							address: data[i].address,
-							iconPath: this.iconPath,
+							// iconPath: this.iconPath,
 							width: 50,
 							height: 50
 						});

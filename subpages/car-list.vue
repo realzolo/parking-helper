@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<navigator :url="`/subpages/caredit?car=${JSON.stringify(item)}`" open-type="navigate" v-for="item in cars" :key="id">
+		<navigator :url="`/subpages/car-edit?car=${JSON.stringify(item)}`" open-type="navigate" v-for="item in cars" :key="id">
 			<van-cell center :title="item.plateNo" :label="item.phone"><van-icon slot="right-icon" name="edit" class="custom-icon" :key="id" /></van-cell>
 		</navigator>
 		<view class="button_wrapper">

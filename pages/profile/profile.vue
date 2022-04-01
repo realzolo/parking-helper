@@ -28,7 +28,7 @@
 		</view>
 		<view class="options">
 			<van-cell-group>
-				<navigator :url="item.to" :open-type="item.id === 1 ? 'switchTab' : 'navigate'" v-for="item in options" :key="id">
+				<navigator :url="item.to" open-type="navigate" v-for="item in options" :key="id">
 					<van-cell :title="item.name" :icon="item.icon"><van-icon name="arrow" class="custom-icon" /></van-cell>
 				</navigator>
 				<van-cell title="分享好友" icon="share-o" @click="onClick"><van-icon name="arrow" class="custom-icon" /></van-cell>
@@ -57,8 +57,8 @@ export default {
 				{ id: 3, name: "积分", icon: "discount", to: "/subpages/point/point" }
 			],
 			options: [
-				{ id: 1, name: "我的订单", icon: "orders-o", to: "/pages/orders/orders" },
-				{ id: 2, name: "车辆管理", icon: "font-o", to: "/subpages/carlist" },
+				{ id: 1, name: "我的车位", icon: "orders-o", to: "/subpages/carport-list" },
+				{ id: 2, name: "我的爱车", icon: "font-o", to: "/subpages/car-list" },
 				{ id: 3, name: "停车记录", icon: "completed", to: "/pages/index/index" }
 				// { id: 4, name: "我要投诉", icon: "service-o", to: "/pages/index/index" },
 				// { id: 5, name: "我要反馈", icon: "smile-comment-o", to: "/pages/index/index" }
@@ -80,7 +80,10 @@ export default {
 			});
 			return;
 		}
-		this.userInfo = JSON.parse(res.data);
+		this.userInfo = JSON.parse(userInfo);
+	},
+	onReady() {
+		this.$hasLogin();
 	},
 	methods: {
 		onClick(event) {

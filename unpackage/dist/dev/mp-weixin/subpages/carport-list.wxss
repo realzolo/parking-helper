@@ -24,11 +24,16 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.button_wrapper.data-v-1dd8d616 {
-  position: absolute;
+.nodata_wrapper.data-v-45efbea3 {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: #999;
+  font-size: 30rpx;
+}
+.button_wrapper.data-v-45efbea3 {
+  position: absolute;
+  bottom: 60rpx;
   width: 100%;
-  bottom: 40rpx;
 }
 

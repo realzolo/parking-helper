@@ -178,21 +178,23 @@ var _default =
       tempMarker: [] };
 
   },
-  onLoad: function onLoad() {var _this = this;
-    // 拿到我的位置坐标
-    this.getLocation().
-    then(function (location) {
-      _this.searchNearParkingLots(location);
-    }).
-    catch(function (error) {
-      setTimeout(function () {
-        _this.$notify({ type: "danger", message: "定位失败！请检查位置服务是否正常。" });
-      }, 1000);
-    });
+  // onLoad() {
+  // 	// 拿到我的位置坐标,然后搜寻附近停车点
+  // 	this.getLocation()
+  // 		.then(location => {
+  // 			this.searchNearParkingLots(location);
+  // 		})
+  // 		.catch(error => {
+  // 			setTimeout(() => {
+  // 				this.$notify({ type: "danger", message: "定位失败！请检查位置服务是否正常。" });
+  // 			}, 1000);
+  // 		});
+  // },
+  onReady: function onReady() {
+    this.$hasLogin();
   },
-  onReady: function onReady() {},
   methods: {
-    searchNearParkingLots: function searchNearParkingLots(_ref) {var _this2 = this;var latitude = _ref.latitude,longitude = _ref.longitude;
+    searchNearParkingLots: function searchNearParkingLots(_ref) {var _this = this;var latitude = _ref.latitude,longitude = _ref.longitude;
       uni.request({
         url: "https://apis.map.qq.com/ws/place/v1/search",
         data: {
@@ -203,16 +205,16 @@ var _default =
 
         success: function success(res) {var
           data = res.data.data;
-          _this2.target = { title: data[0].title, address: data[0].address, longitude: data[0].location.lng, latitude: data[0].location.lat, width: 50, height: 50 };
-          _this2.canTarce = true;
+          _this.target = { title: data[0].title, address: data[0].address, longitude: data[0].location.lng, latitude: data[0].location.lat, width: 50, height: 50 };
+          _this.canTarce = true;
           for (var i = 0; i < data.length; i++) {
-            _this2.markers.push({
+            _this.markers.push({
               id: Number.parseInt(data[i].id.substring(0, 8)),
               title: data[i].title,
               longitude: data[i].location.lng,
               latitude: data[i].location.lat,
               address: data[i].address,
-              iconPath: _this2.iconPath,
+              // iconPath: this.iconPath,
               width: 50,
               height: 50 });
 

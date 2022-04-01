@@ -1,9 +1,6 @@
 <script>
 export default {
-	onLaunch() {
-		// 用户登录判断
-		this.$hasLogin();
-	},
+	onLaunch() {},
 	onShow() {},
 	onHide() {}
 };
