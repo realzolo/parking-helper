@@ -1,7 +1,9 @@
 <template>
 	<view class="wrapper">
+		<van-notify id="van-notify" />
+		<view class="loading_wrapper" v-show="loading"><van-loading vertical type="spinner">加载中...</van-loading></view>
 		<view class="goods_wrapper">
-			<view class="goods_item" v-for="item in carports" @click="toPreview(item)">
+			<view class="goods_item" v-for="(item, index) in carports" @click="toPreview(item)" :key="index">
 				<view class="item_header">
 					<text>{{ item.name }}</text>
 					<text>{{ 100 }} M</text>
@@ -18,10 +20,14 @@
 </template>
 
 <script>
+const uco_carport = uniCloud.importObject("carport");
 export default {
 	data() {
 		return {
-			carports: [
+			start: 0,
+			loading: true,
+			carports: [],
+			carports_bak: [
 				{
 					id: 1,
 					name: "遵化如意停车场",
@@ -102,14 +108,38 @@ export default {
 			]
 		};
 	},
-	onLoad() {},
+	onLoad() {
+		this.getDataFromDB();
+	},
+	onPullDownRefresh() {
+		this.start = 0;
+		this.getDataFromDB();
+	},
+	onReachBottom() {
+		this.getDataFromDB();
+	},
 	methods: {
-		toPreview(carport) {
+		async getDataFromDB() {
+			this.loading = true;
+			const result = await uco_carport.get(this.start, 10);
+			this.loading = false;
+			this.start += 10;
+			if (result.code != 0) {
+				this.$notify({ type: "danger", message: "获取数据失败!" });
+				return;
+			}
+			this.carports = result.data;
+			uni.stopPullDownRefresh();
+		},
+		toPreview(item) {
 			uni.navigateTo({
-				url: `/subpages/preview?carport=${JSON.stringify(carport)}`
+				url: `/subpages/preview?data=${JSON.stringify(item)}`
 			});
 		},
-		toNavigate(carport) {
+		toNavigate(item) {
+			// 根据位置解析坐标
+			console.log(item);
+			return;
 			const plugin = requirePlugin("routePlan");
 			const key = "FLQBZ-67GCW-7SHRW-OOOZQ-WCJA5-W3B2X";
 			const referer = "quick-park";
@@ -128,7 +158,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
+.loading_wrapper {
+	position: absolute;
+	left: 50%;
+	top: 30%;
+	transform: translate(-50%, -50%);
+	z-index: 999;
 }
 .goods_wrapper {
 	.goods_item {

@@ -73,19 +73,22 @@ export default {
 		};
 	},
 	onLoad() {
-		const userInfo = uni.getStorageSync("user_info");
-		if(!userInfo){
-			uni.redirectTo({
-				url: "/subpages/login"
-			});
-			return;
-		}
-		this.userInfo = JSON.parse(userInfo);
+		this.getUserinfoFromCache();
 	},
 	onReady() {
 		this.$hasLogin();
 	},
 	methods: {
+		getUserinfoFromCache() {
+			const { user_info } = uni.getStorageSync("_user");
+			if (!user_info) {
+				uni.redirectTo({
+					url: "/subpages/login"
+				});
+				return;
+			}
+			this.userInfo = user_info;
+		},
 		onClick(event) {
 			this.showShare = true;
 		},

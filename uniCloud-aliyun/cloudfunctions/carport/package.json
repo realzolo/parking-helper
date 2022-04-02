@@ -1,0 +1,7 @@
+{
+  "name": "carport",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

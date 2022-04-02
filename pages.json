@@ -11,7 +11,7 @@
 			"path": "pages/nearby/nearby",
 			"style": {
 				"navigationBarTitleText": "附近",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/orders/orders",
@@ -105,7 +105,7 @@
 			"path": "carport-list",
 			"style": {
 				"navigationBarTitleText": "我的车位",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "carport-edit",
@@ -136,7 +136,8 @@
 			"van-dialog": "/wxcomponents/vant/dist/dialog/index",
 			"van-toast": "/wxcomponents/vant/dist/toast/index",
 			"van-search": "/wxcomponents/vant/dist/search/index",
-			"van-tag": "/wxcomponents/vant/dist/tag/index"
+			"van-tag": "/wxcomponents/vant/dist/tag/index",
+			"van-loading": "/wxcomponents/vant/dist/loading/index"
 		}
 	},
 	"tabBar": {

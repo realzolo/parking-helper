@@ -7,7 +7,6 @@ export default {
 </script>
 
 <style>
-/*每个页面公共css */
 @import "@/wxcomponents/vant/dist/common/index.wxss";
 page {
 	background-color: #efefef;

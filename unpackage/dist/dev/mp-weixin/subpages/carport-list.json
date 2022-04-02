@@ -1,5 +1,5 @@
 {
   "navigationBarTitleText": "我的车位",
-  "enablePullDownRefresh": false,
+  "enablePullDownRefresh": true,
   "usingComponents": {}
 }

@@ -1,5 +1,5 @@
 {
   "navigationBarTitleText": "附近",
-  "enablePullDownRefresh": false,
+  "enablePullDownRefresh": true,
   "usingComponents": {}
 }

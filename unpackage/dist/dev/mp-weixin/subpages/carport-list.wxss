@@ -24,6 +24,14 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.loading_wrapper.data-v-45efbea3 {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 999;
+}
 .nodata_wrapper.data-v-45efbea3 {
   display: flex;
   flex-direction: column;

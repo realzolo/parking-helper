@@ -1,6 +1,8 @@
 <template>
 	<view class="wrapper">
-		<view class="nodata_wrapper" v-if="carports.length === 0">
+		<van-notify id="van-notify" />
+		<view class="loading_wrapper" v-show="loading"><van-loading vertical type="spinner">加载中...</van-loading></view>
+		<view class="nodata_wrapper" v-if="!loading && carports.length === 0">
 			<image src="../static/image/no-carport.svg"></image>
 			<text>你暂未发布车位</text>
 		</view>
@@ -14,36 +16,37 @@
 </template>
 
 <script>
+const uco_carport = uniCloud.importObject("carport");
 export default {
 	data() {
 		return {
-			carports: [
-				{
-					id: 1,
-					name: "西安交通大学城市学院1号车位",
-					address: "西安未央区尚稷路西安交通大学城市学院",
-					price: 23.0
-				}
-			]
+			start: 0,
+			carports: [],
+			loading: true
 		};
 	},
-	onLoad(options) {
-		const dataString = options.data;
-		if (dataString) {
-			const { operation, carport } = JSON.parse(dataString);
-			if (operation === "save") {
-				carport.id = this.carports.length + 1;
-				this.carports.push(carport);
-				return;
-			}
-			if (operation === "delete") {
-				this.carports = this.carports.filter(c => {
-					return c.id != carport.id;
-				});
-			}
-		}
+	onShow() {
+		this.start = 0;
+		this.getDataFromDB();
+	},
+	onPullDownRefresh() {
+		this.start = 0;
+		this.getDataFromDB();
 	},
 	methods: {
+		async getDataFromDB() {
+			this.loading = true;
+			const { user_id } = uni.getStorageSync("_user");
+			const result = await uco_carport.getByUserID(user_id, this.start, 10);
+			this.loading = false;
+			this.start += 10;
+			if (result.code != 0) {
+				this.$notify({ type: "danger", message: "获取数据失败!" });
+				return;
+			}
+			this.carports = result.data;
+			uni.stopPullDownRefresh()
+		},
 		toPublish() {
 			uni.navigateTo({
 				url: "/subpages/carport-edit"
@@ -54,6 +57,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.loading_wrapper {
+	position: absolute;
+	left: 50%;
+	top: 30%;
+	transform: translate(-50%, -50%);
+	z-index: 999;
+}
 .nodata_wrapper {
 	display: flex;
 	flex-direction: column;

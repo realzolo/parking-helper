@@ -91,6 +91,7 @@
     "van-dialog": "/wxcomponents/vant/dist/dialog/index",
     "van-toast": "/wxcomponents/vant/dist/toast/index",
     "van-search": "/wxcomponents/vant/dist/search/index",
-    "van-tag": "/wxcomponents/vant/dist/tag/index"
+    "van-tag": "/wxcomponents/vant/dist/tag/index",
+    "van-loading": "/wxcomponents/vant/dist/loading/index"
   }
 }

@@ -44,18 +44,18 @@ export default {
 			tempMarker: []
 		};
 	},
-	// onLoad() {
-	// 	// 拿到我的位置坐标,然后搜寻附近停车点
-	// 	this.getLocation()
-	// 		.then(location => {
-	// 			this.searchNearParkingLots(location);
-	// 		})
-	// 		.catch(error => {
-	// 			setTimeout(() => {
-	// 				this.$notify({ type: "danger", message: "定位失败！请检查位置服务是否正常。" });
-	// 			}, 1000);
-	// 		});
-	// },
+	onLoad() {
+		// 拿到我的位置坐标,然后搜寻附近停车点
+		this.getLocation()
+			.then(location => {
+				this.searchNearParkingLots(location);
+			})
+			.catch(error => {
+				setTimeout(() => {
+					this.$notify({ type: "danger", message: "定位失败！请检查位置服务是否正常。" });
+				}, 1000);
+			});
+	},
 	onReady() {
 		this.$hasLogin();
 	},

@@ -1,6 +1,6 @@
 const hasLogin = () => {
-	const r = uni.getStorageSync("user_id")
-	if(!uni.getStorageSync("user_id")){
+	const _user = uni.getStorageSync("_user")
+	if(!_user.user_id){
 		uni.redirectTo({
 			url: "/subpages/login"
 		});

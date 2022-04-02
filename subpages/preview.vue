@@ -14,20 +14,24 @@
 				<text>{{ carport.address }}</text>
 			</view>
 			<view class="param_item">
+				<text>价格：</text>
+				<text >{{ carport.price }}</text>
+			</view>
+			<view class="param_item">
+				<text>联系方式：</text>
+				<text >{{ carport.phone }}</text>
+			</view>
+			<view class="param_item">
 				<text>简介：</text>
 				<text style="line-height: 1.5em;">{{ carport.description }}</text>
 			</view>
 			<view class="param_item">
-				<text>长期租用：</text>
-				<text>{{ carport.can_rent ? "可以" : "不可以" }}</text>
-			</view>
-			<view class="param_item" v-if="carport.can_rent">
-				<text>租用价格：</text>
-				<text>{{ carport.rent_price || "*" }} 元/月</text>
+				<text>工作时间：</text>
+				<text>{{ carport.worktime}}</text>
 			</view>
 			<view class="param_item">
-				<text>单价：</text>
-				<text>{{ carport.price || " * " }} 元/时</text>
+				<text>车位剩余：</text>
+				<text>{{ carport.total || 0}} 元/时</text>
 			</view>
 		</view>
 		<view class="button_wrapper"><van-button type="info" round block custom-style="width: 90%;height: 90rpx" @click="createOrder">创建订单</van-button></view>
@@ -42,17 +46,15 @@ export default {
 		};
 	},
 	onLoad(options) {
-		const carport = options.carport;
-		if (carport) {
-			this.carport = JSON.parse(carport);
-			console.log(this.carport);
-			return;
-		}
-		// uni.navigateBack({
-		// 	delta: 1
-		// });
+		this.init(options);
 	},
 	methods: {
+		init(options){
+			console.log(options)
+			if (options.data) {
+				this.carport = JSON.parse(options.data);
+			}
+		},
 		createOrder() {
 			this.$dialog
 				.confirm({
