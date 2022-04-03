@@ -62,15 +62,14 @@ export default {
 		},
 		// 导航
 		toNavigate(item) {
-			return; // TODO
 			const plugin = requirePlugin("routePlan");
 			const key = "FLQBZ-67GCW-7SHRW-OOOZQ-WCJA5-W3B2X";
 			const referer = "quick-park";
 			const endPoint = JSON.stringify({
-				name: carport.name,
+				name: item.name,
 				navigation: 1,
-				latitude: carport.latitude,
-				longitude: carport.longitude
+				latitude: item.latitude,
+				longitude: item.longitude
 			});
 			uni.navigateTo({
 				url: "plugin://routePlan/index?key=" + key + "&referer=" + referer + "&endPoint=" + endPoint
