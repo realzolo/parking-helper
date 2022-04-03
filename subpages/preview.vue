@@ -31,7 +31,7 @@
 			</view>
 			<view class="param_item">
 				<text>车位剩余：</text>
-				<text>{{ carport.total || 0 }} 元/时</text>
+				<text>{{ carport.total || 0 }}</text>
 			</view>
 		</view>
 		<view class="button_wrapper"><van-button type="info" round block custom-style="width: 90%;height: 90rpx" @click="createOrder">创建订单</van-button></view>
@@ -75,6 +75,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.wrapper {
+	background-color: #ffffff;
+	width: 100vw;
+	height: 100vh;
+}
 .swiper_item_wrapper {
 	display: flex;
 	justify-content: center;

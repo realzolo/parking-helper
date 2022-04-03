@@ -121,6 +121,34 @@
                     "name": "",
                     "pathName": "subpages/carport-list",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/carport-edit",
+                    "query": "data=%7B%22_id%22%3A%22624874fbcec89c00019c48d5%22%2C%22user_id%22%3A%22o7_pW5VjCgnTu-SEpal7q37xQyMs%22%2C%22name%22%3A%22%E7%BA%A2%E8%BF%90%E5%81%9C%E8%BD%A6%E5%9C%BA%22%2C%22description%22%3A%22%E6%9C%AC%E5%81%9C%E8%BD%A6%E5%9C%BA%E7%8E%B0%E6%9C%89%E5%A4%A7%E9%87%8F%E5%81%9C%E8%BD%A6%E4%BD%8D%EF%BC%8C%E7%89%A9%E6%B5%81%E5%9B%AD%E5%BB%BA%E8%AE%BE%E4%B8%AD%EF%BC%8C%E4%BF%AE%E8%BD%A6%EF%BC%8C%E4%BD%8F%E5%AE%BF%EF%BC%8C%E9%A4%90%E9%A5%AE%2C%E4%B8%80%E5%BA%94%E4%BF%B1%E5%85%A8%E3%80%82%22%2C%22address%22%3A%22%E6%AD%A6%E6%B1%89%E5%B8%82%E4%B8%9C%E8%A5%BF%E6%B9%96%E5%8C%BA%E9%AB%98%E6%A1%A5%E4%BA%94%E8%B7%AF%22%2C%22price%22%3A%2212.8%22%2C%22phone%22%3A%2218391563384%22%2C%22worktime%22%3A%22%E5%85%A8%E5%A4%A9%22%2C%22total%22%3A%2210%22%2C%22images%22%3A%5B%7B%22url%22%3A%22https%3A%2F%2Fvkceyugu.cdn.bspapp.com%2FVKCEYUGU-094cb5ec-496c-4fcd-8406-b5e4109156b9%2Fcd412c34-bf16-426e-8706-0c5fb7514b5a.png%22%7D%2C%7B%22url%22%3A%22https%3A%2F%2Fvkceyugu.cdn.bspapp.com%2FVKCEYUGU-094cb5ec-496c-4fcd-8406-b5e4109156b9%2Fd0f62911-b16e-4cf2-83f7-32cc871121a0.jpg%22%7D%2C%7B%22url%22%3A%22https%3A%2F%2Fvkceyugu.cdn.bspapp.com%2FVKCEYUGU-094cb5ec-496c-4fcd-8406-b5e4109156b9%2F1258ec7d-9bab-400f-8e43-d9da7e2bb9f8.jpg%22%7D%2C%7B%22url%22%3A%22https%3A%2F%2Fvkceyugu.cdn.bspapp.com%2FVKCEYUGU-094cb5ec-496c-4fcd-8406-b5e4109156b9%2F9538fb7f-0329-4549-af62-8b4988f1b6c6.jpg%22%7D%5D%7D",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/login",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/nearby/nearby",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/carport-edit",
+                    "query": "",
                     "scene": null,
                     "launchMode": "default"
                 }

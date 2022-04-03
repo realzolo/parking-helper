@@ -25,7 +25,7 @@
 			<view class="target_address_wrapper">
 				<text>{{ target.address }}</text>
 			</view>
-			<van-button type="info" icon="guide-o" round block @click="onTrace">到这去</van-button>
+			<van-button type="info" icon="guide-o" round block @click="queryRoute">到这去</van-button>
 		</view>
 	</view>
 </template>
@@ -36,30 +36,26 @@ export default {
 		return {
 			canTarce: false,
 			location: {},
-			ok: false,
-			iconPath: "../../static/image/p.svg",
+			iconPath: "../../static/image/p.png",
 			target: {},
 			isShortest: true,
-			markers: [],
-			tempMarker: []
+			markers: []
 		};
 	},
 	onLoad() {
-		// 拿到我的位置坐标,然后搜寻附近停车点
-		this.getLocation()
-			.then(location => {
-				this.searchNearParkingLots(location);
-			})
-			.catch(error => {
-				setTimeout(() => {
-					this.$notify({ type: "danger", message: "定位失败！请检查位置服务是否正常。" });
-				}, 1000);
-			});
+		this.init();
 	},
 	onReady() {
 		this.$hasLogin();
 	},
 	methods: {
+		async init() {
+			const location = await this.getLocation();
+			if (location) {
+				this.searchNearParkingLots(location);
+			}
+		},
+		// 根据我的位置标记附近停车点
 		searchNearParkingLots({ latitude, longitude }) {
 			uni.request({
 				url: "https://apis.map.qq.com/ws/place/v1/search",
@@ -73,22 +69,23 @@ export default {
 					const { data } = res.data;
 					this.target = { title: data[0].title, address: data[0].address, longitude: data[0].location.lng, latitude: data[0].location.lat, width: 50, height: 50 };
 					this.canTarce = true;
-					for (let i = 0; i < data.length; i++) {
+					data.forEach(item => {
 						this.markers.push({
-							id: Number.parseInt(data[i].id.substring(0, 8)),
-							title: data[i].title,
-							longitude: data[i].location.lng,
-							latitude: data[i].location.lat,
-							address: data[i].address,
-							// iconPath: this.iconPath,
-							width: 50,
-							height: 50
+							id: Number.parseInt(item.id.substring(0, 8)),
+							title: item.title,
+							longitude: item.location.lng,
+							latitude: item.location.lat,
+							address: item.address,
+							iconPath: this.iconPath,
+							width: 30,
+							height: 30
 						});
-					}
+					});
 				}
 			});
 		},
-		onTrace() {
+		// 查询路线
+		queryRoute() {
 			const plugin = requirePlugin("routePlan");
 			const key = "FLQBZ-67GCW-7SHRW-OOOZQ-WCJA5-W3B2X";
 			const referer = "quick-park";
@@ -102,35 +99,49 @@ export default {
 				url: "plugin://routePlan/index?key=" + key + "&referer=" + referer + "&endPoint=" + endPoint
 			});
 		},
+		// 从标记点中获取定位
 		toMarkerForm(e) {
 			const { markerId } = e.detail;
 			this.target = this.markers.filter(e => e.id == markerId)[0];
 			this.isShortest = false;
 		},
+		// 跳转搜索页
 		toSearch() {
 			uni.navigateTo({
-				url: `/subpages/search?markers=${JSON.stringify(this.markers)}`
+				url: `/subpages/search?data=${JSON.stringify(this.markers)}`
 			});
 		},
-		getLocation() {
-			return new Promise((resolve, reject) => {
-				uni.getLocation({
-					type: "gcj02",
-					cacheTimeout: 360,
-					accuracy: "best",
-					isHighAccuracy: true,
-					success: res => {
-						const location = {
-							longitude: res.longitude,
-							latitude: res.latitude
-						};
-						resolve(location);
-					},
-					fail: error => {
-						reject(error);
-					}
-				});
+		// 获取我的位置
+		async getLocation() {
+			// 1. 通过uni的API获取经纬度坐标
+			let res = await uni.getLocation({
+				type: "gcj02",
+				cacheTimeout: 360,
+				accuracy: "best",
+				isHighAccuracy: true
 			});
+			const { errMsg, longitude, latitude } = res[1];
+			if (errMsg != "getLocation:ok") {
+				this.$notify({ type: "danger", message: "定位失败！请检查位置服务是否正常。" });
+				return;
+			}
+			// 2. 通过腾讯位置服务API获取详细地址信息
+			res = await uni.request({
+				url: "https://apis.map.qq.com/ws/geocoder/v1",
+				data: {
+					key: "FLQBZ-67GCW-7SHRW-OOOZQ-WCJA5-W3B2X",
+					location: `${latitude},${longitude}`
+				}
+			});
+			const { status, result } = res[1].data;
+			if (status != 0) {
+				this.$notify({ type: "danger", message: "定位失败！请检查位置服务是否正常。" });
+				return;
+			}
+			const { province, city, district } = result.address_component;
+			// 3. 将位置信息存入本地缓存
+			uni.setStorageSync("_location", { address: province + city + district, longitude, latitude });
+			return { longitude, latitude };
 		}
 	}
 };
