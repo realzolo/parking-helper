@@ -107,6 +107,20 @@
                     "name": "",
                     "pathName": "pages/nearby/nearby",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/carport-edit",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/carport-list",
+                    "query": "",
                     "scene": null,
                     "launchMode": "default"
                 }

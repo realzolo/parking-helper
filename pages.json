@@ -137,7 +137,8 @@
 			"van-toast": "/wxcomponents/vant/dist/toast/index",
 			"van-search": "/wxcomponents/vant/dist/search/index",
 			"van-tag": "/wxcomponents/vant/dist/tag/index",
-			"van-loading": "/wxcomponents/vant/dist/loading/index"
+			"van-loading": "/wxcomponents/vant/dist/loading/index",
+			"van-uploader": "/wxcomponents/vant/dist/uploader/index"
 		}
 	},
 	"tabBar": {

@@ -2,7 +2,7 @@
 	<view class="wrapper">
 		<van-dialog id="van-dialog" />
 		<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
-			<swiper-item v-for="(item, index) in carport.images" :key="index"><image :src="item"></image></swiper-item>
+			<swiper-item v-for="(item, index) in carport.images" :key="index" class="swiper_item_wrapper"><image :src="item.url"></image></swiper-item>
 		</swiper>
 		<view class="param_wrapper">
 			<view class="param_item">
@@ -15,11 +15,11 @@
 			</view>
 			<view class="param_item">
 				<text>价格：</text>
-				<text >{{ carport.price }}</text>
+				<text>{{ carport.price }}</text>
 			</view>
 			<view class="param_item">
 				<text>联系方式：</text>
-				<text >{{ carport.phone }}</text>
+				<text>{{ carport.phone }}</text>
 			</view>
 			<view class="param_item">
 				<text>简介：</text>
@@ -27,11 +27,11 @@
 			</view>
 			<view class="param_item">
 				<text>工作时间：</text>
-				<text>{{ carport.worktime}}</text>
+				<text>{{ carport.worktime }}</text>
 			</view>
 			<view class="param_item">
 				<text>车位剩余：</text>
-				<text>{{ carport.total || 0}} 元/时</text>
+				<text>{{ carport.total || 0 }} 元/时</text>
 			</view>
 		</view>
 		<view class="button_wrapper"><van-button type="info" round block custom-style="width: 90%;height: 90rpx" @click="createOrder">创建订单</van-button></view>
@@ -49,8 +49,8 @@ export default {
 		this.init(options);
 	},
 	methods: {
-		init(options){
-			console.log(options)
+		init(options) {
+			console.log(options);
 			if (options.data) {
 				this.carport = JSON.parse(options.data);
 			}
@@ -75,6 +75,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.swiper_item_wrapper {
+	display: flex;
+	justify-content: center;
+}
 .param_wrapper {
 	padding: 30rpx;
 	.param_item {

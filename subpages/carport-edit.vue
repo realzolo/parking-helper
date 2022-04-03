@@ -11,10 +11,11 @@
 			<van-field :value="carport.worktime" title-width="4rem" placeholder="请输入工作时间" label="工作时间" @change="save('worktime', $event)" clearable />
 			<van-field :value="carport.total" title-width="4rem" placeholder="请输入车位剩余数量" label="车位数量" @change="save('total', $event)" clearable />
 			<!-- 车位图片描述 -->
+			<van-uploader :file-list="carport.images" @afterRead="onUpload" @delete="onDelete" max-count="5" />
 		</van-cell-group>
 		<view class="button_wrapper">
-			<van-button v-if="isEdit" type="danger" round icon="delete-o" block @click="doSaveOrDelete('delete')" custom-style="height: 75rpx;width: 90%;margin: 40rpx">删除</van-button>
-			<van-button type="info" round icon="certificate" block @click="doSaveOrDelete('save')" custom-style=" height: 75rpx;width: 90%">保存</van-button>
+			<van-button v-if="isEdit" type="danger" round icon="delete-o" block @click="doDelete" custom-style="height: 75rpx;width: 90%;margin: 40rpx">删除</van-button>
+			<van-button type="info" round icon="certificate" block @click="doSave" custom-style=" height: 75rpx;width: 90%">保存</van-button>
 		</view>
 	</view>
 </template>
@@ -22,6 +23,7 @@
 <script>
 import { isEmpty } from "@/utils/string-utils";
 const uco_carport = uniCloud.importObject("carport");
+const uco_file = uniCloud.importObject("file");
 export default {
 	data() {
 		return {
@@ -33,65 +35,71 @@ export default {
 				phone: "",
 				description: "",
 				worktime: "",
-				total: 0
+				total: 0,
+				images: []
 			},
-			loading: false
+			loading: false,
+			userId: ""
 		};
 	},
 	onLoad(options) {
 		this.init(options);
 	},
 	methods: {
-		async doSaveOrDelete(operation) {
-			const { name, address, price, phone, description, worktime, total } = this.carport;
-			const { user_id } = uni.getStorageSync("_user");
-			// 发布操作
-			if (operation == "save") {
-				if (isEmpty(name) || isEmpty(address) || isEmpty(phone) || isEmpty(description) || isEmpty(worktime)) {
-					this.$notify({ type: "warning", message: "请将内容填写完整!" });
-					return;
-				}
-				if (price <= 0 || total < 0) {
-					this.$notify({ type: "warning", message: "数据非法!" });
-					return;
-				}
-				this.loading = true;
-				let result;
-				if (this.isEdit) {
-					// 修改模式
-					result = await uco_carport.update(user_id, this.carport);
-				} else {
-					// 创建模式
-					result = await uco_carport.add(user_id, this.carport);
-				}
-				this.loading = false;
-				if (result.code != 0) {
-					this.$notify({ type: "danger", message: "发布失败!" });
-					return;
-				}
-				this.$notify({ type: "success", message: "发布成功!" });
+		async doSave() {
+			const { name, address, price, phone, description, worktime, total, images } = this.carport;
+			if (isEmpty(name) || isEmpty(address) || isEmpty(phone) || isEmpty(description) || isEmpty(worktime)) {
+				this.$notify({ type: "warning", message: "请将内容填写完整!" });
+				return;
+			}
+			if (price <= 0 || total < 0) {
+				this.$notify({ type: "warning", message: "数据非法!" });
+				return;
+			}
+			this.loading = true;
+			
+			// 上传图片
+			const _images = await this.doUpload(images);
+			_images.forEach(e => {
+				this.carport.images[e.index] = { url: e.url };
+			});
+			
+			let result;
+			if (this.isEdit) {
+				// 修改模式
+				result = await uco_carport.update(this.userId, this.carport);
+			} else {
+				// 创建模式
+				result = await uco_carport.add(this.userId, this.carport);
+			}
+			this.loading = false;
+			if (result.code != 0) {
+				this.$notify({ type: "danger", message: "发布失败!" });
+				return;
+			}
+			this.$notify({ type: "success", message: "发布成功!" });
+			setTimeout(() => {
+				uni.navigateBack({
+					delta: 1
+				});
+			}, 1500);
+		},
+		async doDelete() {
+			const result = await uco_carport.deleteByUserID(this.userId, this.carport._id);
+			if (result.code != 0) {
+				this.$notify({ type: "error", message: "数据删除失败!" });
+			} else {
+				this.$notify({ type: "success", message: "删除成功!" });
 				setTimeout(() => {
 					uni.navigateBack({
 						delta: 1
 					});
 				}, 1500);
 			}
-			// 删除操作
-			if (operation == "delete") {
-				console.log(user_id);
-				console.log(this.carport._id);
-				const result = await uco_carport.deleteByUserID(user_id, this.carport._id);
-				if (result.code != 0) {
-					this.$notify({ type: "error", message: "数据删除失败!" });
-				} else {
-					this.$notify({ type: "success", message: "删除成功!" });
-					uni.navigateBack({
-						delta: 1
-					});
-				}
-			}
 		},
 		init(options) {
+			const { user_id } = uni.getStorageSync("_user");
+			this.userId = user_id;
 			if (options.data) {
 				const data = JSON.parse(options.data);
 				this.isEdit = true;
@@ -103,13 +111,54 @@ export default {
 					phone: data.phone || "",
 					description: data.description || "",
 					worktime: data.worktime || "",
-					total: data.total || 0
+					total: data.total || 0,
+					images: data.images || []
 				};
 			}
 		},
 		// 绑定输入框数据
 		save(field, e) {
 			this.carport[field] = e.detail;
+		},
+		// 本地预览
+		onUpload(e) {
+			const { file } = e.detail;
+			console.log(e);
+			this.carport.images.push({ url: file.url });
+		},
+		// 上传图片
+		async doUpload(images) {
+			const promises = [];
+			images.map((item, index) => {
+				if (item.url.startsWith("https")) {
+					return;
+				}
+				const ext = item.url.substring(item.url.lastIndexOf("."));
+				const promise = new Promise(resolve => {
+					uniCloud.uploadFile({
+						filePath: item.url,
+						cloudPath: `${this.userId}/${new Date().getTime()}${ext}`,
+						success: async res => {
+							await resolve({ index: index, url: res.fileID });
+						}
+					});
+				});
+				promises.push(promise);
+			});
+			return Promise.all(promises);
+		},
+		// 删除图片
+		async onDelete(e) {
+			console.log(e);
+			const { index } = e.detail;
+			const fileID = this.carport.images[index].url;
+			this.carport.images.splice(index, 1);
+			// 本地图片(未上传)
+			if (fileID.startsWith("http://tmp")) {
+				return;
+			}
+			// 网络图片
+			await uco_file.deleteFile(fileID);
 		}
 	}
 };
@@ -124,11 +173,10 @@ export default {
 	z-index: 999;
 }
 .button_wrapper {
-	position: absolute;
 	display: flex;
 	justify-content: space-around;
 	flex-direction: column;
-	width: 100%;
 	bottom: 120rpx;
+	margin-top: 80rpx;
 }
 </style>
