@@ -42,8 +42,8 @@ export default {
 		},
 		async getUserInfo() {
 			const res = await uni.getUserProfile({ desc: "获取用户信息" });
-			const { avatarUrl: avatar, nickName: nickName } = res[1].userInfo;
-			return { avatar, nickName };
+			const { avatarUrl: avatar, nickName: nickname } = res[1].userInfo;
+			return { avatar, nickname };
 		}
 	}
 };

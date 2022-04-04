@@ -163,12 +163,44 @@
                     "name": "",
                     "pathName": "subpages/search",
                     "query": "data=%5B%5D",
-                    "scene": null,
                     "launchMode": "default",
+                    "scene": null,
                     "partialCompile": {
                         "enabled": true,
                         "pages": []
                     }
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/profile/profile",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/profile",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null,
+                    "partialCompile": {
+                        "enabled": true,
+                        "pages": []
+                    }
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/profile-edit",
+                    "query": "type=nickname&data=realzolo",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/profile",
+                    "query": "",
+                    "scene": null,
+                    "launchMode": "default"
                 }
             ]
         }

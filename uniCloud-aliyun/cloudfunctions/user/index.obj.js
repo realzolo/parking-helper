@@ -8,6 +8,9 @@ const WECHAT_API = "https://api.weixin.qq.com/sns/jscode2session";
 const db = uniCloud.database();
 const TABLE = "user";
 module.exports = {
+	/**
+	 * 用户微信登录
+	 */
 	login: async (code, userinfo) => {
 		let data = {
 			appid: config.APP_ID,
@@ -32,15 +35,11 @@ module.exports = {
 			user_id: openid
 		}).get();
 
-		if (records.data.length === 0) {
+		if (records.data.length === 0) { // 没有记录则注册
 			await db.collection(TABLE).add({
 				user_id: openid,
 				...userinfo
 			})
-		} else {
-			await db.collection(TABLE).where({
-				user_id: openid
-			}).update(userinfo)
 		}
 		return {
 			code: 0,
@@ -48,8 +47,11 @@ module.exports = {
 			message: '登陆成功'
 		}
 	},
-	
+	/**
+	 * 更新用户信息
+	 */
 	updateUserinfo: async (userId, userinfo) => {
+		console.log(userinfo)
 		if (!userId || !userinfo) {
 			return {
 				code: -1,
@@ -60,7 +62,8 @@ module.exports = {
 		const result = await db.collection(TABLE).where({
 			user_id: userId
 		}).update(userinfo);
-		if (result && result.affectedDocs === 1) {
+
+		if (result && result.affectedDocs >= 0) {
 			return {
 				code: 0,
 				message: "修改成功！"
@@ -68,8 +71,31 @@ module.exports = {
 		}
 		return {
 			code: -1,
-			message: "修改失败！",
-			error: result
+			message: "未知错误！"
+		}
+	},
+	/**
+	 * 获取用户信息
+	 */
+	getUserInfo: async (userId) => {
+		const result = await db.collection(TABLE).where({
+			user_id: userId
+		}).field({
+			avatar: true,
+			nickname: true,
+			phone: true,
+			address: true
+		}).get();
+		if (result && result.affectedDocs >= 0) {
+			return {
+				code: 0,
+				data: result.data
+			}
+		}
+		return {
+			code: -1,
+			message: "未知错误！"
 		}
 	}
+
 }

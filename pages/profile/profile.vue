@@ -2,7 +2,7 @@
 	<view class="wrapper">
 		<van-toast id="van-toast" />
 		<view class="header">
-			<navigator url="/subpage/profile" open-type="navigate" class="header_top">
+			<navigator url="/subpages/profile" open-type="navigate" class="header_top">
 				<van-image class="profile_image" round width="112rpx" height="112rpx" :src="userInfo.avatar" fit="cover" />
 				<view class="profile_info">
 					<view class="profile_info_left">
@@ -42,6 +42,7 @@
 </template>
 
 <script>
+const uco_user = uniCloud.importObject("user");
 export default {
 	data() {
 		return {
@@ -72,22 +73,21 @@ export default {
 			]
 		};
 	},
-	onLoad() {
-		this.getUserinfoFromCache();
+	async onLoad() {
+		await this.getUserInfo();
 	},
 	onReady() {
 		this.$hasLogin();
 	},
 	methods: {
-		getUserinfoFromCache() {
-			const { user_info } = uni.getStorageSync("_user");
-			if (!user_info) {
-				uni.redirectTo({
-					url: "/subpages/login"
-				});
+		async getUserInfo() {
+			const { user_id } = uni.getStorageSync("_user");
+			const { code, data } = await uco_user.getUserInfo(user_id);
+			if (code != 0) {
+				this.$notify({ type: "danger", message: "网络错误,获取数据失败！" });
 				return;
 			}
-			this.userInfo = user_info;
+			this.userInfo = data[0];
 		},
 		onClick(event) {
 			this.showShare = true;
@@ -107,64 +107,62 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
-	.header {
-		background-color: #ffffff;
-		padding: 20rpx;
-		.header_top {
-			display: flex;
-			align-items: center;
-			.profile_image {
-				margin: 20rpx;
-			}
-			.profile_info {
-				width: 100%;
-				display: flex;
-				justify-content: space-between;
-				.profile_info_left {
-					display: flex;
-					flex-direction: column;
-					margin-left: 10rpx;
-					.nickname {
-						font-size: 34rpx;
-						padding-bottom: 10rpx;
-						color: $uni-text-color;
-						font-weight: bold;
-					}
-					.phone {
-						font-size: 28rpx;
-						font-weight: normal;
-						color: $uni-text-color-grey;
-					}
-				}
-				.profile_info_right {
-					van-icon {
-						margin-right: 16rpx;
-					}
-				}
-			}
+.header {
+	background-color: #ffffff;
+	.header_top {
+		display: flex;
+		align-items: center;
+		padding: 20rpx 20rpx 0 20rpx;
+		.profile_image {
+			margin: 20rpx;
 		}
-		.header_bottom {
+		.profile_info {
+			width: 100%;
 			display: flex;
 			justify-content: space-between;
-			align-items: center;
-			padding: 8rpx 20rpx;
-			.item {
+			.profile_info_left {
 				display: flex;
 				flex-direction: column;
-				align-items: center;
-				width: calc(100% / 5);
-				font-size: 30rpx;
-				color: $uni-text-color;
-				// }
+				margin-left: 10rpx;
+				.nickname {
+					font-size: 34rpx;
+					padding-bottom: 10rpx;
+					color: $uni-text-color;
+					font-weight: bold;
+				}
+				.phone {
+					font-size: 28rpx;
+					font-weight: normal;
+					color: $uni-text-color-grey;
+				}
+			}
+			.profile_info_right {
+				van-icon {
+					margin-right: 16rpx;
+				}
 			}
 		}
 	}
-	.bills {
-		margin-top: 20rpx;
+	.header_bottom {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0rpx 40rpx 20rpx 40rpx;
+		.item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: calc(100% / 5);
+			font-size: 30rpx;
+			color: $uni-text-color;
+			// }
+		}
 	}
-	.options {
-		margin-top: 20rpx;
-	}
+}
+.bills {
+	margin-top: 20rpx;
+}
+.options {
+	margin-top: 20rpx;
 }
 </style>

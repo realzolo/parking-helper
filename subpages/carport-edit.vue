@@ -158,7 +158,6 @@ export default {
 		// 本地图片预览
 		onUpload(e) {
 			const { file } = e.detail;
-			console.log(e);
 			this.carport.images.push({ url: file.url });
 		},
 		// 上传图片
@@ -184,7 +183,6 @@ export default {
 		},
 		// 删除图片
 		async onDelete(e) {
-			console.log(e);
 			const { index } = e.detail;
 			const fileID = this.carport.images[index].url;
 			this.carport.images.splice(index, 1);

@@ -113,6 +113,12 @@
 				"navigationBarTitleText": "编辑信息",
 				"enablePullDownRefresh": false
 			}
+		}, {
+			"path": "profile-edit",
+			"style": {
+				"navigationBarTitleText": "编辑信息",
+				"enablePullDownRefresh": false
+			}
 		}]
 	}],
 	"globalStyle": {

@@ -24,48 +24,48 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.wrapper .header.data-v-60cb334c {
+.header.data-v-60cb334c {
   background-color: #ffffff;
-  padding: 20rpx;
 }
-.wrapper .header .header_top.data-v-60cb334c {
+.header .header_top.data-v-60cb334c {
   display: flex;
   align-items: center;
+  padding: 20rpx 20rpx 0 20rpx;
 }
-.wrapper .header .header_top .profile_image.data-v-60cb334c {
+.header .header_top .profile_image.data-v-60cb334c {
   margin: 20rpx;
 }
-.wrapper .header .header_top .profile_info.data-v-60cb334c {
+.header .header_top .profile_info.data-v-60cb334c {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.wrapper .header .header_top .profile_info .profile_info_left.data-v-60cb334c {
+.header .header_top .profile_info .profile_info_left.data-v-60cb334c {
   display: flex;
   flex-direction: column;
   margin-left: 10rpx;
 }
-.wrapper .header .header_top .profile_info .profile_info_left .nickname.data-v-60cb334c {
+.header .header_top .profile_info .profile_info_left .nickname.data-v-60cb334c {
   font-size: 34rpx;
   padding-bottom: 10rpx;
   color: #333;
   font-weight: bold;
 }
-.wrapper .header .header_top .profile_info .profile_info_left .phone.data-v-60cb334c {
+.header .header_top .profile_info .profile_info_left .phone.data-v-60cb334c {
   font-size: 28rpx;
   font-weight: normal;
   color: #999;
 }
-.wrapper .header .header_top .profile_info .profile_info_right van-icon.data-v-60cb334c {
+.header .header_top .profile_info .profile_info_right van-icon.data-v-60cb334c {
   margin-right: 16rpx;
 }
-.wrapper .header .header_bottom.data-v-60cb334c {
+.header .header_bottom.data-v-60cb334c {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8rpx 20rpx;
+  padding: 0rpx 40rpx 20rpx 40rpx;
 }
-.wrapper .header .header_bottom .item.data-v-60cb334c {
+.header .header_bottom .item.data-v-60cb334c {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,10 +73,10 @@
   font-size: 30rpx;
   color: #333;
 }
-.wrapper .bills.data-v-60cb334c {
+.bills.data-v-60cb334c {
   margin-top: 20rpx;
 }
-.wrapper .options.data-v-60cb334c {
+.options.data-v-60cb334c {
   margin-top: 20rpx;
 }
 
