@@ -49,7 +49,6 @@
   width: 95%;
   bottom: 20rpx;
   left: 2.5%;
-  height: 300rpx;
   padding: 20rpx;
   border-radius: 20rpx;
   background-color: #ffffff;

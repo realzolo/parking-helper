@@ -33,21 +33,21 @@
         "backgroundColor": "#F8F8F8"
     },
     "tabBar": {
-        "color": "#7A7E83",
-        "selectedColor": "#3cc51f",
+        "color": "#8a8a8a",
+        "selectedColor": "#1989fa",
         "borderStyle": "black",
         "backgroundColor": "#ffffff",
         "list": [
             {
                 "pagePath": "pages/index/index",
-                "iconPath": "static/image/home.png",
-                "selectedIconPath": "static/image/home-active.png",
+                "iconPath": "static/image/map.png",
+                "selectedIconPath": "static/image/map-active.png",
                 "text": "地图"
             },
             {
                 "pagePath": "pages/nearby/nearby",
-                "iconPath": "static/image/stall.png",
-                "selectedIconPath": "static/image/stall-active.png",
+                "iconPath": "static/image/near.png",
+                "selectedIconPath": "static/image/near-active.png",
                 "text": "附近"
             },
             {
@@ -93,7 +93,8 @@
         "van-search": "/wxcomponents/vant/dist/search/index",
         "van-tag": "/wxcomponents/vant/dist/tag/index",
         "van-loading": "/wxcomponents/vant/dist/loading/index",
-        "van-uploader": "/wxcomponents/vant/dist/uploader/index"
+        "van-uploader": "/wxcomponents/vant/dist/uploader/index",
+        "van-area": "/wxcomponents/vant/dist/area/index"
     },
     "sitemapLocation": "sitemap.json"
 }

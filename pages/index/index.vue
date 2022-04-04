@@ -39,11 +39,12 @@ export default {
 			iconPath: "../../static/image/p.png",
 			target: {},
 			isShortest: true,
-			markers: []
+			markers: [],
+			sharedMarkers: [] // 用于与其他页面共享标记点数据
 		};
 	},
 	onLoad() {
-		this.init();
+		// this.init();
 	},
 	onReady() {
 		this.$hasLogin();
@@ -52,36 +53,46 @@ export default {
 		async init() {
 			const location = await this.getLocation();
 			if (location) {
-				this.searchNearParkingLots(location);
+				await this.searchNearParkingLots(location);
+				uni.setStorage({
+					key: "_shared_markers",
+					data: this.sharedMarkers
+				});
 			}
 		},
 		// 根据我的位置标记附近停车点
-		searchNearParkingLots({ latitude, longitude }) {
-			uni.request({
+		async searchNearParkingLots({ latitude, longitude }) {
+			const res = await uni.request({
 				url: "https://apis.map.qq.com/ws/place/v1/search",
 				data: {
 					keyword: "停车",
 					boundary: `nearby(${latitude},${longitude},1000,1)`,
 					orderby: "_distance",
 					key: "FLQBZ-67GCW-7SHRW-OOOZQ-WCJA5-W3B2X"
-				},
-				success: res => {
-					const { data } = res.data;
-					this.target = { title: data[0].title, address: data[0].address, longitude: data[0].location.lng, latitude: data[0].location.lat, width: 50, height: 50 };
-					this.canTarce = true;
-					data.forEach(item => {
-						this.markers.push({
-							id: Number.parseInt(item.id.substring(0, 8)),
-							title: item.title,
-							longitude: item.location.lng,
-							latitude: item.location.lat,
-							address: item.address,
-							iconPath: this.iconPath,
-							width: 30,
-							height: 30
-						});
-					});
 				}
+			});
+			const { status, data } = res[1].data;
+			if (status != 0) {
+				this.$notify({ type: "danger", message: "请求数据失败！请检查网络是否正常。" });
+				return;
+			}
+			this.target = { title: data[0].title, address: data[0].address, longitude: data[0].location.lng, latitude: data[0].location.lat, width: 50, height: 50 };
+			this.canTarce = true;
+			data.forEach(item => {
+				const tempObj = {
+					id: Number.parseInt(item.id.substring(0, 8)),
+					title: item.title,
+					longitude: item.location.lng,
+					latitude: item.location.lat,
+					address: item.address
+				};
+				this.markers.push({
+					...tempObj,
+					iconPath: this.iconPath,
+					width: 30,
+					height: 30
+				});
+				this.sharedMarkers.push(tempObj);
 			});
 		},
 		// 查询路线
@@ -176,7 +187,6 @@ export default {
 		width: 95%;
 		bottom: 20rpx;
 		left: 2.5%;
-		height: 300rpx;
 		padding: 20rpx;
 		border-radius: 20rpx;
 		background-color: #ffffff;

@@ -149,8 +149,26 @@
                     "name": "",
                     "pathName": "subpages/carport-edit",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/search",
+                    "query": "data=%5B%5D",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/search",
+                    "query": "data=%5B%5D",
                     "scene": null,
-                    "launchMode": "default"
+                    "launchMode": "default",
+                    "partialCompile": {
+                        "enabled": true,
+                        "pages": []
+                    }
                 }
             ]
         }

@@ -6,16 +6,15 @@
 			<view class="goods_item" v-for="(item, index) in carports" @click="toPreview(item)" :key="index">
 				<view class="item_header">
 					<text>{{ item.name }}</text>
-					<text>{{ item.distance }} M</text>
+					<text v-show="item.distance">{{ item.distance }} M</text>
 				</view>
 				<view class="item_body">
 					<text>{{ item.address }}</text>
-					<text>{{ item.price }} 元/时</text>
+					<text>{{ item.price || "*" }} 元/时</text>
 				</view>
 				<view class="item_footer" @click.stop="toNavigate(item)"><image src="../../static/image/navigation.svg"></image></view>
 			</view>
 		</view>
-		<view class="options_wrapper"></view>
 	</view>
 </template>
 
@@ -29,16 +28,18 @@ export default {
 			carports: []
 		};
 	},
-	onLoad() {
-		this.getDataFromDB();
+	async onLoad() {
+		await this.getDataFromDB();
+		this.rerender();
 	},
-	onPullDownRefresh() {
-		this.start = 0;
-		this.getDataFromDB();
+	async onPullDownRefresh() {
+		// this.start = 0;
+		await this.getDataFromDB();
+		this.rerender();
 	},
-	onReachBottom() {
-		this.getDataFromDB();
-	},
+	// onReachBottom() {
+	// 	this.getDataFromDB();
+	// },
 	methods: {
 		// 从数据库获取数据(TODO: 限制拉取条数)
 		async getDataFromDB() {
@@ -53,6 +54,13 @@ export default {
 			}
 			this.carports = data;
 			uni.stopPullDownRefresh();
+		},
+		// 根据页面数据量重新渲染页面(当数据条数为0时，将附近的标记点数据渲染到页面)
+		rerender() {
+			if (this.carports.length == 0) {
+				const _shared_markers = uni.getStorageSync("_shared_markers");
+				this.carports.push(..._shared_markers);
+			}
 		},
 		// 前往详情预览页
 		toPreview(item) {

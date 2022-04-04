@@ -89,7 +89,7 @@ export default {
 				return;
 			}
 			this.carport.location = location;
-			this.carport.valid_address = location.province + location.city + location.district;   // 此属性仅用于判断同一地域
+			this.carport.valid_address = location.province + location.city + location.district; // 此属性仅用于判断同一地域
 			// 上传图片
 			const _images = await this.doUpload(images);
 			_images.forEach(e => {
@@ -135,7 +135,7 @@ export default {
 			if (address == this.tempAddress) {
 				return this.carport.location;
 			}
-			console.log(11)
+			console.log(11);
 			const res = await uni.request({
 				url: `https://apis.map.qq.com/ws/geocoder/v1`,
 				data: {
@@ -188,12 +188,11 @@ export default {
 			const { index } = e.detail;
 			const fileID = this.carport.images[index].url;
 			this.carport.images.splice(index, 1);
-			// 本地图片(未上传)
-			if (fileID.startsWith("http://tmp")) {
-				return;
-			}
+
 			// 网络图片
-			await uco_file.deleteFile(fileID);
+			if (fileID.startsWith("https")) {
+				await uco_file.deleteFile(fileID);
+			}
 		}
 	}
 };
