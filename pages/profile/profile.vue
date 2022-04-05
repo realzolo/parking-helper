@@ -13,9 +13,17 @@
 				</view>
 			</navigator>
 			<view class="header_bottom">
-				<navigator :url="item.to" open-type="navigate" v-for="item in metadata" :key="id" class="item">
-					<text>{{ item.count }}</text>
-					<text>{{ item.name }}</text>
+				<navigator :url="item.to" open-type="navigate" class="item">
+					<text>足迹</text>
+					<text>0</text>
+				</navigator>
+				<navigator :url="item.to" open-type="navigate" class="item">
+					<text>车位</text>
+					<text>{{ carportCount }}</text>
+				</navigator>
+				<navigator :url="item.to" open-type="navigate" class="item">
+					<text>消息</text>
+					<text>0</text>
 				</navigator>
 			</view>
 		</view>
@@ -43,15 +51,12 @@
 
 <script>
 const uco_user = uniCloud.importObject("user");
+const uco_carport = uniCloud.importObject("carport");
 export default {
 	data() {
 		return {
 			userInfo: {},
-			metadata: [
-				{ id: 1, name: "足迹", count: 55, to: "/pages/index/index" },
-				{ id: 2, name: "车位", count: 0, to: "/pages/index/index" },
-				{ id: 3, name: "消息", count: 4, to: "/pages/index/index" }
-			],
+			carportCount: 0,
 			bills: [
 				{ id: 1, name: "钱包", icon: "gold-coin-o", to: "/subpages/wallet" },
 				{ id: 2, name: "优惠券", icon: "coupon-o", to: "/subpages/coupon" },
@@ -75,6 +80,7 @@ export default {
 	},
 	async onLoad() {
 		await this.getUserInfo();
+		await this.getCount();
 	},
 	onReady() {
 		this.$hasLogin();
@@ -88,6 +94,11 @@ export default {
 				return;
 			}
 			this.userInfo = data[0];
+		},
+		async getCount() {
+			const { user_id } = uni.getStorageSync("_user");
+			const {code,data} = await uco_carport.getCount(user_id);
+			this.carportCount = data;
 		},
 		onClick(event) {
 			this.showShare = true;

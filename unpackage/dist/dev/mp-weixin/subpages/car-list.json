@@ -1,5 +1,5 @@
 {
   "navigationBarTitleText": "车辆管理",
-  "enablePullDownRefresh": false,
+  "enablePullDownRefresh": true,
   "usingComponents": {}
 }

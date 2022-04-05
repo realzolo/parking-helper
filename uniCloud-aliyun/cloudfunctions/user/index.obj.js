@@ -51,7 +51,6 @@ module.exports = {
 	 * 更新用户信息
 	 */
 	updateUserinfo: async (userId, userinfo) => {
-		console.log(userinfo)
 		if (!userId || !userinfo) {
 			return {
 				code: -1,
@@ -97,5 +96,4 @@ module.exports = {
 			message: "未知错误！"
 		}
 	}
-
 }

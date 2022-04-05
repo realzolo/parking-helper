@@ -1,0 +1,7 @@
+{
+  "name": "car",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

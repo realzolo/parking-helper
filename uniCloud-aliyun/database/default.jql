@@ -13,3 +13,8 @@ db.collection('user').get();
 db.collection('carport').where({
 	address: "武汉市东西湖区高桥五路1号"
 }).get();
+db.collection('car').add({
+	license_plate: "陕A88888",
+	owner: "o7_pW5VjCgnTu-SEpal7q37xQyMs"
+})
+db.collection('car').get()

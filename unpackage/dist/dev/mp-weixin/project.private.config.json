@@ -199,6 +199,13 @@
                     "name": "",
                     "pathName": "subpages/profile",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/car-list",
+                    "query": "",
                     "scene": null,
                     "launchMode": "default"
                 }

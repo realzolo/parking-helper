@@ -1,48 +1,42 @@
 <template>
 	<view>
-		<navigator :url="`/subpages/car-edit?car=${JSON.stringify(item)}`" open-type="navigate" v-for="item in cars" :key="id">
-			<van-cell center :title="item.plateNo" :label="item.phone"><van-icon slot="right-icon" name="edit" class="custom-icon" :key="id" /></van-cell>
+		<van-notify id="van-notify" />
+		<navigator :url="`/subpages/car-edit?data=${JSON.stringify(item)}&mode=update`" open-type="navigate" v-for="item in cars" :key="item._id">
+			<van-cell center :title="item.license_plate"><van-icon slot="right-icon" name="edit" class="custom-icon" /></van-cell>
 		</navigator>
-		<view class="button_wrapper">
-			<van-button type="info" round icon="plus" @click="toEditPage" custom-style="width: 680rpx; height: 75rpx">添加车辆</van-button>
-		</view>
+		<view class="button_wrapper"><van-button type="info" round icon="plus" @click="toEditPage" custom-style="width: 680rpx; height: 75rpx">添加车辆</van-button></view>
 	</view>
 </template>
 
 <script>
+const uco_car = uniCloud.importObject("car");
 export default {
 	data() {
 		return {
-			cars: [
-				{ id: 1, plateNo: "陕A666666", owner: "李秀明", phone: "18391563384" },
-				{ id: 2, plateNo: "陕A777777", owner: "李秀明", phone: "18391563384" },
-				{ id: 3, plateNo: "陕A888888", owner: "李秀明", phone: "18391563384" }
-			]
+			cars: []
 		};
 	},
-	onLoad(options) {
-		const data = options.data;
-		if (data) {
-			const { operation, car } = JSON.parse(data);
-			if (operation === "save") {
-				car.id = this.cars.length + 1;
-				this.cars.push(car);
-				return;
-			}
-			if (operation === "delete") {
-				this.cars = this.cars.filter(c => {
-					return c.id != car.id;
-				})
-			}
-		}
+	onLoad() {},
+	onShow() {
+		this.getDataFromDB();
+	},
+	onPullDownRefresh() {
+		this.getDataFromDB();
 	},
 	methods: {
-		saveOrDelete(options) {
-			console.log(options);
+		async getDataFromDB() {
+			const { user_id } = uni.getStorageSync("_user");
+			const { code, data } = await uco_car.get(user_id);
+			if (code != 0) {
+				this.$notify({ type: "danger", message: "网络错误，获取数据失败!" });
+				return;
+			}
+			this.cars = data;
+			uni.stopPullDownRefresh();
 		},
 		toEditPage() {
 			uni.navigateTo({
-				url: "/subpages/caredit"
+				url: "/subpages/car-edit"
 			});
 		}
 	}

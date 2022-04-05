@@ -1,59 +1,79 @@
 <template>
 	<view>
 		<van-notify id="van-notify" />
-		<van-cell-group>
-			<van-field :value="carInfo.plateNo" placeholder="请输入车牌号" label="车牌号" @change="savePlateNo" />
-			<van-field :value="carInfo.owner" placeholder="请输入所属人姓名" label="所属人" @change="saveOwner" />
-			<van-field :value="carInfo.phone" placeholder="请输入联系电话" label="联系电话" @change="savePhone" />
-		</van-cell-group>
+		<van-cell-group><van-field :value="carInfo.license_plate" placeholder="请输入车牌号" label="车牌号" @change="binding('license_plate', $event)" /></van-cell-group>
 		<view class="button_wrapper">
-			<van-button type="danger" round icon="delete-o" block @click="doSaveOrDelete('delete')" custom-style="height: 75rpx;width: 90%;margin: 40rpx">删除</van-button>
-			<van-button type="info" round icon="certificate" block @click="doSaveOrDelete('save')" custom-style=" height: 75rpx;width: 90%">保存</van-button>
+			<van-button v-if="mode == 'update'" type="danger" round icon="delete-o" block @click="onDelete" custom-style="height: 75rpx;width: 90%;margin: 40rpx">删除</van-button>
+			<van-button type="info" round icon="certificate" block @click="onSave" custom-style=" height: 75rpx;width: 90%">保存</van-button>
 		</view>
 	</view>
 </template>
 
 <script>
+const uco_car = uniCloud.importObject("car");
 export default {
 	data() {
 		return {
 			carInfo: {
-				plateNo: "",
-				owner: "",
-				phone: ""
-			}
+				_id: 0,
+				license_plate: "",
+				owner: ""
+			},
+			mode: ""
 		};
 	},
 	onLoad(options) {
-		if (options.car) {
-			this.carInfo = JSON.parse(options.car);
-		}
+		this.init(options);
 	},
 	methods: {
-		doSaveOrDelete(operation) {
-			const { plateNo, owner, phone } = this.carInfo;
-			if (operation === "save") {
-				if (!plateNo.trim() || !owner.trim() || !phone.trim()) {
-					this.$notify({ type: "warning", message: "请将内容填写完整!" });
-					return;
-				}
+		init(options) {
+			const { data, mode } = options;
+			if (mode == "update") {
+				this.carInfo = JSON.parse(options.data);
 			}
-			const data = JSON.stringify({
-				operation: operation,
-				car: this.carInfo
-			});
-			uni.navigateTo({
-				url: `/subpages/carlist?data=${data}`
-			});
+			this.mode = mode;
 		},
-		savePlateNo(e) {
-			this.carInfo.plateNo = e.detail;
+		async onSave() {
+			const { _id, license_plate } = this.carInfo;
+			const { user_id } = uni.getStorageSync("_user");
+			if (!license_plate.trim()) {
+				this.$notify({ type: "warning", message: "数据无效!" });
+				return;
+			}
+			let res;
+			if (this.mode == "update") {
+				res = await uco_car.update(_id, license_plate);
+			} else {
+				res = await uco_car.add(user_id, license_plate);
+			}
+			const { code, data, message } = res;
+			if (code != 0) {
+				this.$notify({ type: "warning", message: message });
+				return;
+			}
+			this.$notify({ type: "success", message: "保存成功!" });
+			setTimeout(() => {
+				uni.navigateBack({
+					delta: 1
+				});
+			}, 1000);
 		},
-		saveOwner(e) {
-			this.carInfo.owner = e.detail;
+		async onDelete() {
+			const { _id, license_plate } = this.carInfo;
+			const { code } = await uco_car.delete(_id, license_plate);
+			if (code != 0) {
+				this.$notify({ type: "warning", message: "删除失败" });
+				return;
+			}
+			this.$notify({ type: "success", message: "删除成功!" });
+			setTimeout(() => {
+				uni.navigateBack({
+					delta: 1
+				});
+			}, 500);
 		},
-		savePhone(e) {
-			this.carInfo.phone = e.detail;
+		binding(key, e) {
+			this.carInfo[key] = e.detail;
 		}
 	}
 };

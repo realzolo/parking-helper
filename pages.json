@@ -45,7 +45,7 @@
 			"path": "car-list",
 			"style": {
 				"navigationBarTitleText": "车辆管理",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "car-edit",

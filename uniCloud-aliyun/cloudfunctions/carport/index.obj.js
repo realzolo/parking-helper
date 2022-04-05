@@ -1,6 +1,7 @@
 // 开发文档: https://uniapp.dcloud.net.cn/uniCloud/cloud-obj
 const db = uniCloud.database();
 const TABLE = "carport";
+const uco_user = uniCloud.importObject("user");
 module.exports = {
 	/**
 	 * userId: 用户的openid
@@ -60,7 +61,15 @@ module.exports = {
 			data: res.data
 		}
 	},
-
+	getCount: async (userId) => {
+		const res  = await db.collection(TABLE).where({
+			user_id :userId
+		}).count();
+		return {
+			code: 0,
+			data: res.total
+		}
+	},
 	deleteByUserID: async (userId, id) => {
 		const res = await db.collection(TABLE).doc(id).remove()
 		return {
