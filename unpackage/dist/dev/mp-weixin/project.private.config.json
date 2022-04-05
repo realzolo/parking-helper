@@ -206,6 +206,13 @@
                     "name": "",
                     "pathName": "subpages/car-list",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpages/search",
+                    "query": "",
                     "scene": null,
                     "launchMode": "default"
                 }

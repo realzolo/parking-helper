@@ -25,35 +25,36 @@
 			<view class="target_address_wrapper">
 				<text>{{ target.address }}</text>
 			</view>
-			<van-button type="info" icon="guide-o" round block @click="queryRoute">到这去</van-button>
+			<van-button type="info" icon="guide-o" round block @click="onQueryRoute">到这去</van-button>
 		</view>
 	</view>
 </template>
 
 <script>
+import { getCurrentCoord,  queryRoute, searchLocation } from "@/service/geo";
 export default {
 	data() {
 		return {
-			canTarce: false,
 			location: {},
-			iconPath: "../../static/image/p.png",
 			target: {},
-			isShortest: true,
 			markers: [],
+			isShortest: true,
+			canTarce: false,
+			iconPath: "../../static/image/p.png",
 			sharedMarkers: [] // 用于与其他页面共享标记点数据
 		};
 	},
 	onLoad() {
-		// this.init();
+		this.init();
 	},
 	onReady() {
 		this.$hasLogin();
 	},
 	methods: {
 		async init() {
-			const location = await this.getLocation();
-			if (location) {
-				await this.searchNearParkingLots(location);
+			const { longitude, latitude } = await getCurrentCoord();
+			if (longitude && latitude) {
+				await this.searchNearParkingLots(longitude, latitude);
 				uni.setStorage({
 					key: "_shared_markers",
 					data: this.sharedMarkers
@@ -61,23 +62,16 @@ export default {
 			}
 		},
 		// 根据我的位置标记附近停车点
-		async searchNearParkingLots({ latitude, longitude }) {
-			const res = await uni.request({
-				url: "https://apis.map.qq.com/ws/place/v1/search",
-				data: {
-					keyword: "停车",
-					boundary: `nearby(${latitude},${longitude},1000,1)`,
-					orderby: "_distance",
-					key: "FLQBZ-67GCW-7SHRW-OOOZQ-WCJA5-W3B2X"
-				}
-			});
-			const { status, data } = res[1].data;
-			if (status != 0) {
-				this.$notify({ type: "danger", message: "请求数据失败！请检查网络是否正常。" });
+		async searchNearParkingLots(longitude, latitude) {
+			const data = await searchLocation(longitude, latitude);
+			if (!data) {
+				this.$notify({ type: "danger", message: "网络错误，请稍后重试！" });
 				return;
 			}
+			// 第一个数据为最近定位点
 			this.target = { title: data[0].title, address: data[0].address, longitude: data[0].location.lng, latitude: data[0].location.lat, width: 50, height: 50 };
 			this.canTarce = true;
+
 			data.forEach(item => {
 				const tempObj = {
 					id: Number.parseInt(item.id.substring(0, 8)),
@@ -95,21 +89,6 @@ export default {
 				this.sharedMarkers.push(tempObj);
 			});
 		},
-		// 查询路线
-		queryRoute() {
-			const plugin = requirePlugin("routePlan");
-			const key = "FLQBZ-67GCW-7SHRW-OOOZQ-WCJA5-W3B2X";
-			const referer = "quick-park";
-			const endPoint = JSON.stringify({
-				name: this.target.title,
-				navigation: 1,
-				latitude: this.target.latitude,
-				longitude: this.target.longitude
-			});
-			uni.navigateTo({
-				url: "plugin://routePlan/index?key=" + key + "&referer=" + referer + "&endPoint=" + endPoint
-			});
-		},
 		// 从标记点中获取定位
 		toMarkerForm(e) {
 			const { markerId } = e.detail;
@@ -119,40 +98,11 @@ export default {
 		// 跳转搜索页
 		toSearch() {
 			uni.navigateTo({
-				url: `/subpages/search?data=${JSON.stringify(this.markers)}`
+				url: "/subpages/search"
 			});
 		},
-		// 获取我的位置
-		async getLocation() {
-			// 1. 通过uni的API获取经纬度坐标
-			let res = await uni.getLocation({
-				type: "gcj02",
-				cacheTimeout: 360,
-				accuracy: "best",
-				isHighAccuracy: true
-			});
-			const { errMsg, longitude, latitude } = res[1];
-			if (errMsg != "getLocation:ok") {
-				this.$notify({ type: "danger", message: "定位失败！请检查位置服务是否正常。" });
-				return;
-			}
-			// 2. 通过腾讯位置服务API获取详细地址信息
-			res = await uni.request({
-				url: "https://apis.map.qq.com/ws/geocoder/v1",
-				data: {
-					key: "FLQBZ-67GCW-7SHRW-OOOZQ-WCJA5-W3B2X",
-					location: `${latitude},${longitude}`
-				}
-			});
-			const { status, result } = res[1].data;
-			if (status != 0) {
-				this.$notify({ type: "danger", message: "定位失败！请检查位置服务是否正常。" });
-				return;
-			}
-			const { province, city, district } = result.address_component;
-			// 3. 将位置信息存入本地缓存
-			uni.setStorageSync("_location", { address: province + city + district, longitude, latitude });
-			return { longitude, latitude };
+		onQueryRoute(){
+			queryRoute();
 		}
 	}
 };

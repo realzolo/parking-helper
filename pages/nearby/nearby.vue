@@ -3,7 +3,7 @@
 		<van-notify id="van-notify" />
 		<view class="loading_wrapper" v-show="loading"><van-loading vertical type="spinner">加载中...</van-loading></view>
 		<view class="goods_wrapper">
-			<view class="goods_item" v-for="(item, index) in carports" @click="toPreview(item)" :key="index">
+			<view class="goods_item" v-for="(item, index) in carports" @click="onPreview(item)" :key="index">
 				<view class="item_header">
 					<text>{{ item.name }}</text>
 					<text v-show="item.distance">{{ item.distance }} M</text>
@@ -12,13 +12,14 @@
 					<text>{{ item.address }}</text>
 					<text>{{ item.price || "*" }} 元/时</text>
 				</view>
-				<view class="item_footer" @click.stop="toNavigate(item)"><image src="../../static/image/navigation.svg"></image></view>
+				<view class="item_footer" @click.stop="onQueryRoute(item)"><image src="../../static/image/navigation.svg"></image></view>
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
+import { queryRoute } from "@/service/geo";
 const uco_carport = uniCloud.importObject("carport");
 export default {
 	data() {
@@ -63,25 +64,14 @@ export default {
 			}
 		},
 		// 前往详情预览页
-		toPreview(item) {
+		onPreview(item) {
 			uni.navigateTo({
 				url: `/subpages/preview?data=${JSON.stringify(item)}`
 			});
 		},
-		// 导航
-		toNavigate(item) {
-			const plugin = requirePlugin("routePlan");
-			const key = "FLQBZ-67GCW-7SHRW-OOOZQ-WCJA5-W3B2X";
-			const referer = "quick-park";
-			const endPoint = JSON.stringify({
-				name: item.name,
-				navigation: 1,
-				latitude: item.latitude,
-				longitude: item.longitude
-			});
-			uni.navigateTo({
-				url: "plugin://routePlan/index?key=" + key + "&referer=" + referer + "&endPoint=" + endPoint
-			});
+		// 查询路线
+		onQueryRoute({name, longitude, latitude}) {
+			queryRoute(name, longitude, latitude);
 		}
 	}
 };

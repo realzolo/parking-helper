@@ -22,6 +22,7 @@
 
 <script>
 import { isEmpty } from "@/utils/string-utils";
+import { getCoordByAddress, getLocationByCoord } from "@/service/geo";
 const uco_carport = uniCloud.importObject("carport");
 const uco_file = uniCloud.importObject("file");
 export default {
@@ -135,20 +136,8 @@ export default {
 			if (address == this.tempAddress) {
 				return this.carport.location;
 			}
-			console.log(11);
-			const res = await uni.request({
-				url: `https://apis.map.qq.com/ws/geocoder/v1`,
-				data: {
-					key: "FLQBZ-67GCW-7SHRW-OOOZQ-WCJA5-W3B2X",
-					address: address
-				}
-			});
-			const { status, result } = res[1].data;
-			if (status != 0) return; // 地址解析失败
-
-			const { location, address_components } = result;
-			const { lng: longitude, lat: latitude } = location;
-			const { province, city, district } = address_components;
+			const { longitude, latitude } = await getCoordByAddress(address);
+			const { province, city, district } = await getLocationByCoord(longitude, latitude);
 			return { longitude, latitude, province, city, district };
 		},
 		// 绑定输入框数据
